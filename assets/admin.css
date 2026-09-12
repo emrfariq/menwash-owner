@@ -90,6 +90,39 @@ button{ font-family:var(--font-body); }
 .nav a:hover{ background:rgba(255,255,255,.06); color:#fff; }
 .nav a.active{ background:var(--terracotta); color:#fff; box-shadow:0 8px 18px -8px rgba(210,83,83,.7); }
 
+/* Sub-menu di sidebar */
+.nav-sub {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 28px;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+.nav-sub a {
+  padding: 7px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: var(--sidebar-text-dim);
+}
+.nav-sub a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.nav-sub a.active {
+  background: rgba(210, 83, 83, 0.28);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: none;
+}
+.nav-sub a.sub-danger {
+  color: #fca5a5;
+}
+.nav-sub a.sub-danger:hover {
+  color: #ffffff;
+}
+
 .sidebar-outlet{
   margin:auto 14px 14px; padding:13px 14px;
   background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
@@ -441,3 +474,122 @@ tr.row-click:hover{ background:#FDF8F1; }
 
 .muted{ color:var(--text-soft); font-size:12.5px; }
 .mt-4{margin-top:4px;} .mt-8{margin-top:8px;} .mt-14{margin-top:14px;} .mt-20{margin-top:20px;}
+
+/* ---------- Global Floating Action Button (WhatsApp Style) ---------- */
+.fab-activate {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--terracotta), var(--maroon));
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 25px rgba(210, 53, 53, 0.45), 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, background 0.2s ease;
+}
+
+.fab-activate:hover {
+  transform: scale(1.08) translateY(-3px);
+  box-shadow: 0 14px 30px rgba(210, 53, 53, 0.6), 0 6px 14px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #e35a5a, #b04242);
+}
+
+.fab-activate:active {
+  transform: scale(0.96) translateY(0);
+}
+
+.fab-activate svg {
+  width: 26px;
+  height: 26px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+/* Tooltip floating button */
+.fab-activate .fab-tooltip {
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--text);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: var(--shadow-card);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  font-family: var(--font-body);
+}
+
+.fab-activate .fab-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%);
+  border-width: 5px 0 5px 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--text);
+}
+
+.fab-activate:hover .fab-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(-4px);
+}
+
+/* Pulse animation badge for FAB */
+.fab-activate .fab-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #22c55e;
+  border: 2px solid #fff;
+}
+
+.fab-activate .fab-badge::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 2px solid #22c55e;
+  animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* Accent Card Mesin Gagal Dashboard */
+.card-failed-accent {
+  border-left: 4px solid var(--err) !important;
+}
+
+.badge-pulsing-err {
+  background: var(--err-bg);
+  color: var(--err);
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .fab-activate {
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+  }
+}
+

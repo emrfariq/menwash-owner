@@ -45,10 +45,19 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
         Dashboard
       </a>
-      <a href="mesin.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="7"/><path d="M9 13c0-1.7 1.3-3 3-3s3 1.3 3 3"/><path d="M8 4h1M12 4h1M16 4h1"/></svg>
-        Mesin
-      </a>
+      <div class="nav-group">
+        <a href="mesin.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="7"/><path d="M9 13c0-1.7 1.3-3 3-3s3 1.3 3 3"/><path d="M8 4h1M12 4h1M16 4h1"/></svg>
+          Mesin
+        </a>
+        <div class="nav-sub">
+          <a href="mesin.html">Semua Mesin</a>
+          <a href="gangguan.html" class="sub-danger" style="display:flex; align-items:center; justify-content:space-between;">
+            <span>Mesin Gangguan</span>
+            <span class="badge err" style="padding:2px 7px; font-size:10px; border-radius:99px;">1</span>
+          </a>
+        </div>
+      </div>
       <a href="transaksi.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v4H4zM4 12h16M4 16h10M4 20h6"/></svg>
         Transaksi
@@ -109,9 +118,15 @@
 
       <!-- Siklus berjalan -->
       <div class="card">
-        <div class="card-head">
+        <div class="card-head" style="flex-wrap:wrap; gap:12px;">
           <div><h3>Siklus sedang berjalan</h3><p>QRIS mandiri &amp; transaksi tunai — klik untuk kontrol darurat</p></div>
-          <span class="badge busy"><span class="dot"></span>5 berjalan</span>
+          <div class="chip-row">
+            <div class="fchip active" onclick="filterCycles('semua', this)">Semua Siklus</div>
+            <div class="fchip" onclick="filterCycles('cuci', this)">Cuci saja</div>
+            <div class="fchip" onclick="filterCycles('kering', this)">Kering saja</div>
+            <div class="fchip" onclick="filterCycles('kombo', this)">Kombo</div>
+            <div class="fchip" onclick="filterCycles('gangguan', this)">Gangguan / Gagal</div>
+          </div>
         </div>
         <div class="card-body">
 
@@ -165,7 +180,18 @@
       <div class="card">
         <div class="tabs">
           <button class="active" data-tab="selesai" onclick="switchTab('selesai')">Selesai</button>
-          <button data-tab="gagal" onclick="switchTab('gagal')">Gagal / Gangguan</button>
+          <button data-tab="gagal" onclick="switchTab('gagal')" style="position:relative;">
+            Gagal / Gangguan
+            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--err); margin-left:4px;"></span>
+          </button>
+        </div>
+
+        <div class="alert danger" style="margin:16px 20px 0; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+            <span><b>⚠️ Perlu Tindakan Admin:</b> Mesin Cuci #04 terhenti (MW-284688) — Pelanggan disarankan datang ke Meja Admin untuk kompensasi.</span>
+          </div>
+          <a href="dummy-restart.html" class="btn btn-danger btn-sm" style="white-space:nowrap;">Pelanggan Datang (Restart Dummy) →</a>
         </div>
 
         <div class="card-body" id="tab-selesai" style="padding:0;">
@@ -363,5 +389,123 @@
     document.getElementById('confirmPaidBtn').disabled = e.target.value.trim().length === 0;
   });
 </script>
+<!-- ===== MODAL: AKTIFKAN MESIN TUNAI (GLOBAL) ===== -->
+<div class="modal-overlay" id="qaModal">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h3>Aktifkan mesin untuk pelanggan tunai</h3>
+        <p>Untuk transaksi yang dibayar langsung di outlet</p>
+      </div>
+      <button class="modal-close" onclick="closeEl('qaModal')">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div id="qa-step1">
+        <div class="field required">
+          <label>Pilih mesin</label>
+          <select id="qaMesin">
+            <option>Mesin Cuci #01 — Tersedia</option>
+            <option>Mesin Cuci #05 — Tersedia</option>
+            <option>Mesin Pengering #02 — Tersedia</option>
+            <option>Mesin Pengering #03 — Tersedia</option>
+          </select>
+        </div>
+        <div class="field required">
+          <label>Layanan</label>
+          <div class="seg-row">
+            <div class="seg active" data-group="layanan" data-value="Cuci saja">Cuci saja</div>
+            <div class="seg" data-group="layanan" data-value="Kering saja">Kering saja</div>
+            <div class="seg" data-group="layanan" data-value="Cuci + Kering">Cuci + Kering</div>
+          </div>
+        </div>
+        <div class="field required">
+          <label>Durasi</label>
+          <div class="seg-row">
+            <div class="seg" data-group="durasi" data-value="30 menit">30 menit</div>
+            <div class="seg active" data-group="durasi" data-value="40 menit">40 menit</div>
+            <div class="seg" data-group="durasi" data-value="60 menit">60 menit</div>
+          </div>
+        </div>
+        <div class="alert info">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l9 4.9V17L12 22l-9-4.9V6.9z"/><path d="M12 8v5M12 16h.01"/></svg>
+          <span>Mesin akan menyala langsung tanpa menunggu pembayaran QRIS. Pastikan uang tunai sudah diterima.</span>
+        </div>
+      </div>
+
+      <div id="qa-step2" style="display:none;">
+        <div class="summary-box">
+          <div class="summary-row"><span class="k">Mesin</span><span class="v" id="cfMesin">Mesin Cuci #01</span></div>
+          <div class="summary-row"><span class="k">Layanan</span><span class="v" id="cfLayanan">Cuci saja</span></div>
+          <div class="summary-row"><span class="k">Durasi</span><span class="v" id="cfDurasi">40 menit</span></div>
+          <div class="summary-row"><span class="k">Metode</span><span class="v">Tunai — dicatat manual</span></div>
+          <div class="summary-row"><span class="k">Total</span><span class="v" style="color:var(--maroon); font-size:15px;">Rp 12.000</span></div>
+        </div>
+        <div class="alert danger mt-14" id="qaWarnBox">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+          <span>Mesin akan langsung menyala setelah kamu menekan tombol di bawah. Aksi ini tidak bisa dibatalkan.</span>
+        </div>
+        <div class="processing-box mt-14" id="qaProcessingBox" style="display:none;">
+          <div class="p-spin"></div>
+          <div class="p-text"><b>Memproses…</b><span>Perintah diterima sistem (202 Accepted) — menunggu mesin ACK melalui MQTT.</span></div>
+        </div>
+      </div>
+
+      <div id="qa-step3" style="display:none;">
+        <div style="text-align:center; padding:6px 0 4px;">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--ok-bg);color:var(--ok);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div style="font-weight:800; font-size:15.5px;">Mesin berhasil dinyalakan</div>
+          <div class="muted mt-4">Transaksi tunai sudah tercatat di sistem.</div>
+        </div>
+        <div class="summary-box mt-14">
+          <div class="summary-row"><span class="k">ID Transaksi</span><span class="v">MW-TX-9934</span></div>
+          <div class="summary-row"><span class="k">Mesin</span><span class="v" id="cfMesin2">Mesin Cuci #01</span></div>
+          <div class="summary-row"><span class="k">Dicatat oleh</span><span class="v">Rani Admin</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-foot" id="qaFoot1">
+      <button class="btn btn-ghost" onclick="closeEl('qaModal')">Batal</button>
+      <button class="btn btn-primary btn-block" onclick="showStep('qa',2)">Lanjutkan</button>
+    </div>
+    <div class="modal-foot" id="qaFoot2" style="display:none;">
+      <button class="btn btn-ghost" onclick="showStep('qa',1)">Kembali</button>
+      <button class="btn btn-primary btn-block" id="qaActivateBtn" onclick="qaActivate()">Nyalakan Mesin Sekarang</button>
+    </div>
+    <div class="modal-foot" id="qaFoot3" style="display:none;">
+      <button class="btn btn-primary btn-block" onclick="closeEl('qaModal'); showStep('qa',1)">Selesai</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== GLOBAL FLOATING ACTION BUTTON (WhatsApp Style) ===== -->
+<button class="fab-activate" onclick="showStep('qa',1); openEl('qaModal')" title="Aktifkan Mesin Tunai">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>
+  <span class="fab-tooltip">Aktifkan Mesin Tunai</span>
+  <span class="fab-badge"></span>
+</button>
+
+<script>
+  function qaActivate(){
+    document.getElementById('qaWarnBox').style.display = 'none';
+    document.getElementById('qaProcessingBox').style.display = 'flex';
+    document.getElementById('qaActivateBtn').disabled = true;
+    document.querySelector('#qaFoot2 .btn-ghost').disabled = true;
+    simulateAsyncCommand(()=>{
+      showStep('qa',3);
+      showToast('Mesin dinyalakan & transaksi tunai tercatat');
+      document.getElementById('qaWarnBox').style.display = 'flex';
+      document.getElementById('qaProcessingBox').style.display = 'none';
+      document.getElementById('qaActivateBtn').disabled = false;
+      document.querySelector('#qaFoot2 .btn-ghost').disabled = false;
+    });
+  }
+</script>
+
 </body>
 </html>
