@@ -593,3 +593,266 @@ tr.row-click:hover{ background:#FDF8F1; }
   }
 }
 
+/* ==========================================================
+   GANGGUAN PAGE — Komponen Tambahan
+   ========================================================== */
+
+/* ---------- Gangguan Stat Grid (2×2) ---------- */
+.gangguan-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.gs-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  animation: fadeSlideUp .35s ease both;
+}
+.gs-card:nth-child(2){ animation-delay:.05s; }
+.gs-card:nth-child(3){ animation-delay:.10s; }
+.gs-card:nth-child(4){ animation-delay:.15s; }
+@keyframes fadeSlideUp{
+  from{ opacity:0; transform:translateY(8px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+.gs-icon {
+  width: 34px; height: 34px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.gs-icon svg { width: 16px; height: 16px; }
+.gs-icon.err  { background: var(--err-bg);   color: var(--err); }
+.gs-icon.off  { background: var(--off-bg);   color: var(--off); }
+.gs-icon.amber{ background: var(--amber-bg); color: var(--amber); }
+.gs-icon.ok   { background: var(--ok-bg);    color: var(--ok); }
+.gs-body {}
+.gs-val {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 20px; line-height: 1;
+}
+.gs-val.err   { color: var(--err); }
+.gs-val.off   { color: var(--off); }
+.gs-val.amber { color: var(--amber); }
+.gs-val.ok    { color: var(--ok); }
+.gs-label {
+  font-size: 11px; color: var(--text-soft); margin-top: 3px; line-height: 1.3;
+}
+
+/* ---------- Urgent Banner (compact) ---------- */
+.urgent-banner {
+  display: flex; align-items: center;
+  gap: 14px; flex-wrap: wrap;
+  background: var(--err-bg);
+  border: 1.5px solid rgba(158, 59, 59, 0.25);
+  border-left: 4px solid var(--err);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  animation: fadeSlideUp .25s ease both;
+}
+.urgent-banner .ub-pulse {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--err); flex-shrink: 0;
+  position: relative;
+}
+.urgent-banner .ub-pulse::before {
+  content: "";
+  position: absolute; inset: -3px; border-radius: 50%;
+  border: 2px solid var(--err);
+  animation: pulseRing 1.6s cubic-bezier(.4,0,.6,1) infinite;
+}
+.urgent-banner .ub-body { flex: 1; min-width: 0; }
+.urgent-banner .ub-title {
+  font-weight: 800; font-size: 13.5px; color: var(--err);
+}
+.urgent-banner .ub-desc {
+  font-size: 12px; color: var(--err); opacity: .8; margin-top: 2px;
+}
+.urgent-banner .ub-cta {
+  flex-shrink: 0;
+}
+.btn-danger-pulse {
+  background: var(--err); color: #fff;
+  border: none; border-radius: 10px;
+  font-family: var(--font-body); font-weight: 700; font-size: 13px;
+  padding: 10px 18px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  box-shadow: 0 6px 18px -6px rgba(158,59,59,.55);
+  transition: transform .18s ease, box-shadow .18s ease, background .15s;
+}
+.btn-danger-pulse:hover {
+  background: var(--maroon);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px -6px rgba(158,59,59,.7);
+}
+.btn-danger-pulse:active { transform: translateY(0); }
+.btn-danger-pulse svg { width: 15px; height: 15px; }
+
+/* ---------- Gangguan Grid (2 kolom, equal height) ---------- */
+.gangguan-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+/* ---------- Gangguan Card ---------- */
+.gangguan-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.gangguan-card:hover {
+  box-shadow: 0 6px 20px -10px rgba(60,16,16,.22);
+  transform: translateY(-1px);
+}
+
+/* Accent strip di atas card — penanda prioritas visual */
+.gc-accent {
+  height: 4px; width: 100%;
+}
+.gangguan-card.gc-err   .gc-accent { background: var(--err); }
+.gangguan-card.gc-off   .gc-accent { background: var(--off); }
+.gangguan-card.gc-amber .gc-accent { background: var(--amber); }
+
+.gc-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 10px;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.gc-header-left { display: flex; align-items: center; gap: 10px; }
+.gc-machine-icon {
+  width: 36px; height: 36px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.gc-machine-icon svg { width: 17px; height: 17px; }
+.gc-machine-icon.err   { background: var(--err-bg);   color: var(--err); }
+.gc-machine-icon.off   { background: var(--off-bg);   color: var(--off); }
+.gc-machine-icon.amber { background: var(--amber-bg); color: var(--amber); }
+.gc-name { font-weight: 800; font-size: 14px; color: var(--text); }
+.gc-sub  { font-size: 11.5px; color: var(--text-soft); margin-top: 2px; }
+
+/* Body mengisi ruang tersisa agar footer selalu di bawah */
+.gc-body { padding: 12px 16px; flex: 1; }
+.gc-desc {
+  font-size: 12.5px; line-height: 1.55; color: var(--text-soft);
+  padding: 9px 12px;
+  background: var(--page-bg);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--border);
+}
+.gangguan-card.gc-err   .gc-desc { border-left-color: var(--err);   color: var(--err); background: var(--err-bg); }
+.gangguan-card.gc-off   .gc-desc { border-left-color: var(--off);   color: var(--off); background: var(--off-bg); }
+.gangguan-card.gc-amber .gc-desc { border-left-color: var(--amber); color: var(--amber); background: var(--amber-bg); }
+
+.gc-footer {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border-soft);
+  background: var(--page-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Tombol primer — warna konsisten per tipe card */
+.gc-btn-main {
+  width: 100%;
+  border: none; border-radius: 9px;
+  font-family: var(--font-body); font-weight: 700; font-size: 13px;
+  padding: 10px 14px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: filter .15s, transform .15s;
+  color: #fff;
+}
+.gc-btn-main svg { width: 14px; height: 14px; flex-shrink: 0; }
+.gc-btn-main:hover { filter: brightness(.9); transform: translateY(-1px); }
+.gc-btn-main:active { transform: translateY(0); filter: brightness(.85); }
+
+/* Warna tombol primer mengikuti tipe gangguan */
+.gangguan-card.gc-err   .gc-btn-main { background: var(--err);   box-shadow: 0 4px 12px -6px rgba(158,59,59,.45); }
+.gangguan-card.gc-off   .gc-btn-main { background: var(--terracotta); box-shadow: 0 4px 12px -6px rgba(210,83,83,.4); }
+.gangguan-card.gc-amber .gc-btn-main { background: var(--ok);    box-shadow: 0 4px 12px -6px rgba(110,143,92,.4); }
+
+/* Tombol sekunder — seragam untuk semua card */
+.gc-btn-secondary {
+  width: 100%;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-body); font-weight: 600; font-size: 11.5px;
+  color: var(--text-soft); padding: 7px 12px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  transition: border-color .15s, color .15s, background .15s;
+}
+.gc-btn-secondary svg { width: 13px; height: 13px; }
+.gc-btn-secondary:hover {
+  border-color: var(--terracotta-light);
+  color: var(--maroon);
+  background: #FDF1EC;
+}
+
+/* ---------- Filter Chip Riwayat ---------- */
+.history-filter-row {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 10px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.history-filter-row .chip-row { gap: 6px; }
+
+/* ---------- Confirm Modal (kecil) ---------- */
+.confirm-overlay {
+  position: fixed; inset: 0;
+  background: rgba(30,10,10,.38);
+  display: none; align-items: center; justify-content: center;
+  z-index: 55; padding: 20px;
+  animation: none;
+}
+.confirm-overlay.show { display: flex; }
+.confirm-modal {
+  width: 380px; max-width: 100%;
+  background: #fff; border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-pop); overflow: hidden;
+  animation: fadeSlideUp .2s ease both;
+}
+.confirm-modal .cm-head {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.confirm-modal .cm-head h3 {
+  margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 16px;
+}
+.confirm-modal .cm-head p {
+  margin: 3px 0 0; font-size: 12px; color: var(--text-soft);
+}
+.confirm-modal .cm-body {
+  padding: 16px 20px;
+}
+.confirm-modal .cm-foot {
+  padding: 12px 20px 18px;
+  border-top: 1px solid var(--border-soft);
+  display: flex; gap: 10px;
+}
+
+/* ---------- Responsive (gangguan page) ---------- */
+@media (max-width: 1100px) {
+  .gangguan-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  .gangguan-stat-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .gangguan-stat-grid { grid-template-columns: 1fr 1fr; }
+}

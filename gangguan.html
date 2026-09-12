@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menwash Admin — Mesin Gangguan</title>
+<title>Menwash Admin — Mesin Gangguan & Perbaikan</title>
+<meta name="description" content="Pusat penanganan gangguan mesin cuci dan pengering — kelola restart, kompensasi pelanggan, dan riwayat perbaikan outlet Menwash.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23D25353'/%3E%3Ccircle cx='12' cy='13.3' r='6' fill='none' stroke='%23FFEAD3' stroke-width='1.8'/%3E%3Cpath d='M9.1 13.3c0-1.6 1.3-2.9 2.9-2.9s2.9 1.3 2.9 2.9-1.3 2.9-2.9 2.9' fill='none' stroke='%23FFEAD3' stroke-width='1.8' stroke-linecap='round'/%3E%3Cpath d='M8.3 4.6h1M11.5 4.6h1M14.7 4.6h1' stroke='%23FFEAD3' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/admin.css">
 </head>
@@ -70,13 +71,14 @@
   <!-- ===== MAIN ===== -->
   <main class="main">
 
+    <!-- Topbar -->
     <div class="topbar">
       <div>
         <div class="topbar-title" style="display:flex; align-items:center; gap:8px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--err);"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
           Mesin Gangguan &amp; Perbaikan
         </div>
-        <div class="topbar-sub">Pusat penanganan kendala mesin &amp; kompensasi pelanggan datang</div>
+        <div class="topbar-sub">Pusat penanganan kendala mesin &amp; kompensasi pelanggan</div>
       </div>
       <div class="topbar-right">
         <div class="clock" id="liveClock"><b>09:41:07</b><span>Kamis, hari ini</span></div>
@@ -86,155 +88,198 @@
 
     <div class="content">
 
-      <!-- Mini Stat Summary -->
-      <div class="mini-stat-row" style="margin-bottom:18px;">
-        <div class="mini-stat" style="border-left:4px solid var(--err);">
-          <div class="ms-val" style="color:var(--err);">1</div>
-          <div class="ms-label">Pelanggan Menunggu Kompensasi</div>
-        </div>
-        <div class="mini-stat" style="border-left:4px solid var(--off);">
-          <div class="ms-val" style="color:var(--off);">1</div>
-          <div class="ms-label">Mesin Offline</div>
-        </div>
-        <div class="mini-stat" style="border-left:4px solid var(--amber);">
-          <div class="ms-val" style="color:var(--amber);">1</div>
-          <div class="ms-label">Perlu Perawatan (Tidak Mendesak)</div>
-        </div>
-        <div class="mini-stat" style="border-left:4px solid var(--ok);">
-          <div class="ms-val" style="color:var(--ok);">2</div>
-          <div class="ms-label">Sudah Selesai Ditangani Hari Ini</div>
-        </div>
-      </div>
+      <!-- ===== STAT GRID (2×2 premium) ===== -->
+      <div class="gangguan-stat-grid">
 
-      <!-- High Priority Banner -->
-      <div class="alert danger mb-18" style="margin-bottom:18px; padding:14px 18px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
-          <div>
-            <div style="font-weight:800; font-size:14.5px;">Paling mendesak: Mesin Cuci #04 berhenti, pelanggan akan datang</div>
-            <div style="font-size:12px; opacity:0.9; margin-top:2px;">Begitu pelanggan tiba di outlet, klik tombol ini untuk restart mesin tanpa memungut bayaran lagi.</div>
+        <div class="gs-card">
+          <div class="gs-icon err">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div class="gs-body">
+            <div class="gs-val err">1</div>
+            <div class="gs-label">Pelanggan Menunggu Kompensasi</div>
           </div>
         </div>
-        <a href="dummy-restart.html" class="btn btn-danger btn-sm" style="white-space:nowrap; padding:10px 16px;">
-          Pelanggan Sudah Datang →
-        </a>
+
+        <div class="gs-card">
+          <div class="gs-icon off">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18.36 6.64A9 9 0 115.64 17.36"/><path d="M12 2v10"/></svg>
+          </div>
+          <div class="gs-body">
+            <div class="gs-val off">1</div>
+            <div class="gs-label">Mesin Offline</div>
+          </div>
+        </div>
+
+        <div class="gs-card">
+          <div class="gs-icon amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+          </div>
+          <div class="gs-body">
+            <div class="gs-val amber">1</div>
+            <div class="gs-label">Perlu Perawatan · Tidak Mendesak</div>
+          </div>
+        </div>
+
+        <div class="gs-card">
+          <div class="gs-icon ok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div class="gs-body">
+            <div class="gs-val ok">2</div>
+            <div class="gs-label">Selesai Ditangani Hari Ini</div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Active Gangguan Section -->
+      <!-- ===== URGENT BANNER (compact, hanya muncul jika ada pelanggan menunggu) ===== -->
+      <div class="urgent-banner" id="urgentBanner">
+        <div class="ub-pulse"></div>
+        <div class="ub-body">
+          <div class="ub-title">Mesin Cuci #04 — Pelanggan akan datang ke outlet</div>
+          <div class="ub-desc">Begitu pelanggan tiba, klik tombol untuk restart mesin tanpa biaya tambahan. Refund transaksi lama otomatis diproses sistem.</div>
+        </div>
+        <div class="ub-cta">
+          <a href="dummy-restart.html" class="btn-danger-pulse" id="urgentCTA">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            Pelanggan Sudah Datang
+          </a>
+        </div>
+      </div>
+
+      <!-- ===== GANGGUAN AKTIF ===== -->
       <div class="card card-failed-accent" style="margin-bottom:20px;">
         <div class="card-head">
           <div>
-            <h3>Daftar Gangguan Aktif (Perlu Tindakan)</h3>
+            <h3>Gangguan Aktif — Perlu Tindakan</h3>
             <p>Diurutkan dari yang paling mendesak — kerjakan dari atas ke bawah</p>
           </div>
           <span class="badge err"><span class="dot"></span>3 Mesin Bermasalah</span>
         </div>
         <div class="card-body">
 
-          <!-- Card Gangguan 1: Siklus terhenti — paling mendesak, pelanggan menunggu -->
-          <div style="background:var(--page-bg); border:1.5px solid var(--err); border-radius:var(--radius-md); padding:16px; margin-bottom:14px;">
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-              <div style="display:flex; align-items:center; gap:10px;">
-                <span class="m-icon" style="width:36px; height:36px; border-radius:10px; background:var(--err-bg); color:var(--err); display:flex; align-items:center; justify-content:center;">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="7"/><path d="M9 13c0-1.7 1.3-3 3-3s3 1.3 3 3"/></svg>
-                </span>
-                <div>
-                  <div style="font-weight:800; font-size:15px;">Mesin Cuci #04</div>
-                  <div class="muted mt-4">Berhenti di tengah cuci · TX <b>MW-284688</b></div>
+          <!-- Grid 2 kolom, equal height -->
+          <div class="gangguan-grid">
+
+            <!-- ─── Kartu 1: Siklus terhenti — PALING MENDESAK ─── -->
+            <div class="gangguan-card gc-err" id="gc-cuci04">
+              <div class="gc-accent"></div>
+              <div class="gc-header">
+                <div class="gc-header-left">
+                  <div class="gc-machine-icon err">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="7"/><path d="M9 13c0-1.7 1.3-3 3-3s3 1.3 3 3"/><path d="M8 4h1M12 4h1M16 4h1"/></svg>
+                  </div>
+                  <div>
+                    <div class="gc-name">Mesin Cuci #04</div>
+                    <div class="gc-sub">TX <b>MW-284688</b> · berhenti menit ke-18</div>
+                  </div>
                 </div>
+                <span class="badge err"><span class="dot"></span>Pelanggan Menunggu</span>
               </div>
-              <span class="badge err">Pelanggan Menunggu</span>
+              <div class="gc-body">
+                <div class="gc-desc">Air tidak mengalir, siklus berhenti di menit ke-18 dari 40 menit. Restart mesin begitu pelanggan tiba — refund otomatis, pelanggan tidak bayar ulang.</div>
+              </div>
+              <div class="gc-footer">
+                <a href="dummy-restart.html" class="gc-btn-main" style="text-decoration:none;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                  Pelanggan Sudah Datang — Restart
+                </a>
+                <button class="gc-btn-secondary" id="btn-emergency-04" onclick="openDrawerWithCode('Mesin Cuci #04', 'err', 'MW-284688')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  Kontrol Darurat Mesin
+                </button>
+              </div>
             </div>
 
-            <div class="alert danger mt-14" style="font-size:12.5px;">
-              <span><b>Apa yang terjadi:</b> Air tidak mengalir sehingga siklus berhenti di menit ke-18 dari 40 menit. <b>Yang perlu kamu lakukan:</b> begitu pelanggan datang ke outlet, klik tombol di bawah untuk restart mesin dengan uang dummy — transaksi lama otomatis di-refund oleh sistem, tanpa pelanggan bayar ulang.</span>
-            </div>
-
-            <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
-              <a href="dummy-restart.html" class="btn btn-danger btn-sm" style="flex:1; justify-content:center; min-width:220px;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                Pelanggan Sudah Datang — Restart Mesin
-              </a>
-              <button class="btn btn-ghost btn-sm" onclick="openDrawerWithCode('Mesin Cuci #04', 'err', 'MW-284688')">
-                Kontrol Darurat Mesin
-              </button>
-            </div>
-          </div>
-
-          <!-- Card Gangguan 2: Offline — perlu dicek langsung, belum tentu ada pelanggan menunggu -->
-          <div style="background:var(--page-bg); border:1.5px solid var(--border); border-radius:var(--radius-md); padding:16px; margin-bottom:14px;">
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-              <div style="display:flex; align-items:center; gap:10px;">
-                <span class="m-icon" style="width:36px; height:36px; border-radius:10px; background:var(--off-bg); color:var(--off); display:flex; align-items:center; justify-content:center;">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v6M12 22v-3M4.9 4.9l3.5 3.5M4.9 19.1l3.5-3.5M19.1 4.9l-3.5 3.5M19.1 19.1l-3.5-3.5"/><circle cx="12" cy="12" r="3"/></svg>
-                </span>
-                <div>
-                  <div style="font-weight:800; font-size:15px;">Mesin Cuci #02</div>
-                  <div class="muted mt-4">Tidak merespon sejak <b>08:12</b> hari ini</div>
+            <!-- ─── Kartu 2: Offline ─── -->
+            <div class="gangguan-card gc-off" id="gc-cuci02">
+              <div class="gc-accent"></div>
+              <div class="gc-header">
+                <div class="gc-header-left">
+                  <div class="gc-machine-icon off">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18.36 6.64A9 9 0 115.64 17.36"/><path d="M12 2v10"/></svg>
+                  </div>
+                  <div>
+                    <div class="gc-name">Mesin Cuci #02</div>
+                    <div class="gc-sub">Tidak merespon sejak <b>08:12</b> hari ini</div>
+                  </div>
                 </div>
+                <span class="badge off">Offline</span>
               </div>
-              <span class="badge off">Offline</span>
+              <div class="gc-body">
+                <div class="gc-desc">Mesin berhenti mengirim status ke sistem — kemungkinan listrik atau kabel jaringan terlepas. Cek kabel daya &amp; koneksi di outlet, atau hubungi teknisi.</div>
+              </div>
+              <div class="gc-footer">
+                <button class="gc-btn-main" id="btn-periksa-02" onclick="openConfirm('confirm-periksa', 'Mesin Cuci #02', 'Tandai Sudah Diperiksa', 'Pastikan Anda sudah memeriksa langsung kabel daya dan koneksi jaringan mesin ini.')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>
+                  Tandai Sudah Diperiksa
+                </button>
+                <button class="gc-btn-secondary" id="btn-emergency-02" onclick="openDrawerWithCode('Mesin Cuci #02', 'err', '—')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  Kontrol Darurat Mesin
+                </button>
+              </div>
             </div>
 
-            <div class="alert mt-14" style="font-size:12.5px; background:var(--off-bg); color:var(--off);">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l9 4.9V17L12 22l-9-4.9V6.9z"/><path d="M12 8v5M12 16h.01"/></svg>
-              <span><b>Apa yang terjadi:</b> Mesin berhenti mengirim status ke sistem, kemungkinan listrik atau kabel jaringan terlepas. <b>Yang perlu kamu lakukan:</b> cek langsung kabel daya &amp; koneksi mesin di outlet. Jika listrik menyala tapi tetap offline, hubungi teknisi.</span>
-            </div>
-
-            <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
-              <button class="btn btn-secondary btn-sm" style="flex:1; justify-content:center; min-width:220px;" onclick="showToast('Mesin Cuci #02 ditandai sudah diperiksa')">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M20 6L9 17l-5-5"/></svg>
-                Tandai Sudah Diperiksa
-              </button>
-              <button class="btn btn-ghost btn-sm" onclick="openDrawerWithCode('Mesin Cuci #02', 'err', '—')">
-                Kontrol Darurat Mesin
-              </button>
-            </div>
-          </div>
-
-          <!-- Card Gangguan 3: Kerusakan fisik — tidak mendesak, tidak ada pelanggan menunggu -->
-          <div style="background:var(--page-bg); border:1.5px solid var(--border); border-radius:var(--radius-md); padding:16px;">
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-              <div style="display:flex; align-items:center; gap:10px;">
-                <span class="m-icon" style="width:36px; height:36px; border-radius:10px; background:var(--amber-bg); color:var(--amber); display:flex; align-items:center; justify-content:center;">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h3M18 12h3M12 3v3M12 18v3"/><circle cx="12" cy="12" r="4"/></svg>
-                </span>
-                <div>
-                  <div style="font-weight:800; font-size:15px;">Mesin Pengering #05</div>
-                  <div class="muted mt-4">Dilaporkan kurang panas · masih bisa dipakai</div>
+            <!-- ─── Kartu 3: Tidak mendesak — perawatan ─── -->
+            <div class="gangguan-card gc-amber" id="gc-kering05">
+              <div class="gc-accent"></div>
+              <div class="gc-header">
+                <div class="gc-header-left">
+                  <div class="gc-machine-icon amber">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h3M18 12h3M12 3v3M12 18v3"/><circle cx="12" cy="12" r="4"/></svg>
+                  </div>
+                  <div>
+                    <div class="gc-name">Mesin Pengering #05</div>
+                    <div class="gc-sub">Dilaporkan kurang panas · masih bisa dipakai</div>
+                  </div>
                 </div>
+                <span class="badge amber">Tidak Mendesak</span>
               </div>
-              <span class="badge amber">Tidak Mendesak</span>
+              <div class="gc-body">
+                <div class="gc-desc">Pelanggan melapor hasil pengeringan kurang panas — kemungkinan filter lint tersumbat. Bersihkan filter sebelum dipakai pelanggan berikutnya.</div>
+              </div>
+              <div class="gc-footer">
+                <button class="gc-btn-main" id="btn-selesai-05" onclick="openConfirm('confirm-selesai', 'Mesin Pengering #05', 'Tandai Selesai Diperbaiki', 'Konfirmasi bahwa filter sudah dibersihkan dan mesin siap dipakai pelanggan.')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>
+                  Tandai Selesai Diperbaiki
+                </button>
+                <button class="gc-btn-secondary" id="btn-emergency-05" onclick="openDrawerWithCode('Mesin Pengering #05', 'err', '—')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  Kontrol Darurat Mesin
+                </button>
+              </div>
             </div>
 
-            <div class="alert info mt-14" style="font-size:12.5px;">
-              <span><b>Apa yang terjadi:</b> Pelanggan sebelumnya melapor hasil pengeringan kurang panas — kemungkinan filter lint tersumbat. <b>Yang perlu kamu lakukan:</b> bersihkan filter sebelum dipakai pelanggan berikutnya, lalu tandai selesai.</span>
-            </div>
-
-            <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
-              <button class="btn btn-primary btn-sm" style="flex:1; justify-content:center; min-width:220px;" onclick="showToast('Status Mesin Pengering #05 diperbarui menjadi Tersedia')">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M20 6L9 17l-5-5"/></svg>
-                Tandai Selesai Diperbaiki
-              </button>
-              <button class="btn btn-ghost btn-sm" onclick="openDrawerWithCode('Mesin Pengering #05', 'err', '—')">
-                Kontrol Darurat Mesin
-              </button>
-            </div>
-          </div>
+          </div><!-- /gangguan-grid -->
 
         </div>
       </div>
 
-      <!-- Riwayat Penanganan Gangguan -->
+
+      <!-- ===== RIWAYAT PENANGANAN ===== -->
       <div class="card">
         <div class="card-head">
           <div>
-            <h3>Riwayat Penanganan Gangguan &amp; Kompensasi</h3>
-            <p>Historis perbaikan dan restart uang dummy yang telah diselesaikan</p>
+            <h3>Riwayat Penanganan &amp; Kompensasi</h3>
+            <p>Historis perbaikan dan restart dummy yang telah diselesaikan</p>
           </div>
         </div>
+
+        <!-- Filter chips -->
+        <div class="history-filter-row">
+          <div class="chip-row" id="historyFilterChips">
+            <button class="fchip active" id="chip-semua" onclick="filterHistory('semua', this)">Semua</button>
+            <button class="fchip" id="chip-dummy" onclick="filterHistory('dummy', this)">Restart Dummy</button>
+            <button class="fchip" id="chip-fisik" onclick="filterHistory('fisik', this)">Perbaikan Fisik</button>
+            <button class="fchip" id="chip-offline" onclick="filterHistory('offline', this)">Offline</button>
+          </div>
+          <div class="muted" id="historyCount" style="font-size:12px;">3 catatan</div>
+        </div>
+
         <div class="card-body" style="padding:0;">
-          <table>
+          <table id="historyTable">
             <thead>
               <tr>
                 <th>ID Transaksi</th>
@@ -246,15 +291,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-histtype="dummy">
                 <td class="tx-id">MW-DM-0042</td>
                 <td>Cuci #04 (restart)</td>
                 <td><span class="badge err">Terhenti 18m</span></td>
-                <td>Restart Uang Dummy 15 menit (refund MW-284688)</td>
+                <td>Restart Dummy 15 menit · refund MW-284688</td>
                 <td class="mono">Rani Admin · 09:34</td>
                 <td style="text-align:right;"><span class="badge ok">Selesai</span></td>
               </tr>
-              <tr>
+              <tr data-histtype="fisik">
                 <td class="tx-id">MW-284611</td>
                 <td>Pengering #05</td>
                 <td><span class="badge amber">Filter Tersumbat</span></td>
@@ -262,11 +307,11 @@
                 <td class="mono">Rani Admin · Kemarin 16:40</td>
                 <td style="text-align:right;"><span class="badge ok">Selesai</span></td>
               </tr>
-              <tr>
+              <tr data-histtype="dummy">
                 <td class="tx-id">MW-DM-0039</td>
                 <td>Cuci #01 (restart)</td>
                 <td><span class="badge err">Door Lock Stuck</span></td>
-                <td>Restart Uang Dummy 40 menit</td>
+                <td>Restart Dummy 40 menit</td>
                 <td class="mono">Budi Admin · Kemarin 11:15</td>
                 <td style="text-align:right;"><span class="badge ok">Selesai</span></td>
               </tr>
@@ -275,9 +320,9 @@
         </div>
       </div>
 
-    </div>
+    </div><!-- /content -->
   </main>
-</div>
+</div><!-- /app -->
 
 <!-- ===== DRAWER: KONTROL DARURAT ===== -->
 <div class="overlay" id="mDrawer">
@@ -435,15 +480,44 @@
   </div>
 </div>
 
-<!-- ===== GLOBAL FLOATING ACTION BUTTON (WhatsApp Style) ===== -->
-<button class="fab-activate" onclick="showStep('qa',1); openEl('qaModal')" title="Aktifkan Mesin Tunai">
+<!-- ===== MODAL KONFIRMASI KECIL ===== -->
+<div class="confirm-overlay" id="confirmModal">
+  <div class="confirm-modal">
+    <div class="cm-head">
+      <h3 id="cmTitle">Konfirmasi Tindakan</h3>
+      <p id="cmDesc">Pastikan Anda sudah memeriksa kondisi mesin.</p>
+    </div>
+    <div class="cm-body">
+      <div class="field">
+        <label>Catatan singkat (opsional)</label>
+        <textarea id="cmNote" placeholder="cth. Kabel sudah dicek, mesin tetap offline — akan hubungi teknisi" style="min-height:64px;"></textarea>
+      </div>
+    </div>
+    <div class="cm-foot">
+      <button class="btn btn-ghost" onclick="closeEl('confirmModal')">Batal</button>
+      <button class="btn btn-primary btn-block" id="cmConfirmBtn" onclick="submitConfirm()">
+        <span id="cmBtnLabel">Konfirmasi</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== GLOBAL FAB ===== -->
+<button class="fab-activate" onclick="showStep('qa',1); openEl('qaModal')" title="Aktifkan Mesin Tunai" id="fabActivate">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>
   <span class="fab-tooltip">Aktifkan Mesin Tunai</span>
   <span class="fab-badge"></span>
 </button>
 
+<!-- Toast notification -->
+<div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+  <span>Aksi berhasil</span>
+</div>
+
 <script src="assets/admin.js"></script>
 <script>
+  /* ---- Drawer: Kontrol Darurat ---- */
   function openDrawerWithCode(code, status, tx){
     document.getElementById('dCode').textContent = code;
     document.getElementById('dStatus').textContent = status === 'err' ? 'Gangguan' : status;
@@ -482,6 +556,7 @@
     document.getElementById('confirmPaidBtn').disabled = e.target.value.trim().length === 0;
   });
 
+  /* ---- Quick Activate Tunai ---- */
   function qaActivate(){
     document.getElementById('qaWarnBox').style.display = 'none';
     document.getElementById('qaProcessingBox').style.display = 'flex';
@@ -495,6 +570,51 @@
       document.getElementById('qaActivateBtn').disabled = false;
       document.querySelector('#qaFoot2 .btn-ghost').disabled = false;
     });
+  }
+
+  /* ---- Modal Konfirmasi Kecil ---- */
+  let _confirmType = '';
+  let _confirmMachine = '';
+
+  function openConfirm(type, machineName, btnLabel, desc){
+    _confirmType = type;
+    _confirmMachine = machineName;
+    document.getElementById('cmTitle').textContent = btnLabel + ' — ' + machineName;
+    document.getElementById('cmDesc').textContent = desc;
+    document.getElementById('cmBtnLabel').textContent = btnLabel;
+    document.getElementById('cmNote').value = '';
+    openEl('confirmModal');
+  }
+
+  function submitConfirm(){
+    closeEl('confirmModal');
+    if(_confirmType === 'confirm-selesai'){
+      showToast('Status ' + _confirmMachine + ' diperbarui menjadi Tersedia');
+      const card = document.getElementById('gc-kering05');
+      if(card){ card.style.opacity = '.45'; card.style.pointerEvents = 'none'; }
+    } else if(_confirmType === 'confirm-periksa'){
+      showToast(_confirmMachine + ' ditandai sudah diperiksa');
+      const card = document.getElementById('gc-cuci02');
+      if(card){ card.style.opacity = '.45'; card.style.pointerEvents = 'none'; }
+    }
+  }
+
+  /* ---- Filter Riwayat Gangguan ---- */
+  function filterHistory(type, el){
+    // update chip
+    document.querySelectorAll('#historyFilterChips .fchip').forEach(c => c.classList.remove('active'));
+    if(el) el.classList.add('active');
+
+    const rows = document.querySelectorAll('#historyTable tbody tr');
+    let visible = 0;
+    rows.forEach(row => {
+      const match = type === 'semua' || row.dataset.histtype === type;
+      row.style.display = match ? '' : 'none';
+      if(match) visible++;
+    });
+
+    const countEl = document.getElementById('historyCount');
+    if(countEl) countEl.textContent = visible + ' catatan';
   }
 </script>
 </body>
