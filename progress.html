@@ -230,20 +230,20 @@
   </main>
 </div>
 
-<!-- ===== DRAWER: KONTROL DARURAT (sama seperti halaman Mesin) ===== -->
-<div class="overlay" id="mDrawer">
-  <div class="drawer">
-    <div class="drawer-head">
+<!-- ===== MODAL: KONTROL DARURAT (sama seperti halaman Mesin) ===== -->
+<div class="modal-overlay" id="mDrawer">
+  <div class="modal">
+    <div class="modal-head">
       <div>
         <h3 id="dCode">Mesin Cuci #03</h3>
         <p id="dSub">QRIS mandiri · sisa 9 menit</p>
       </div>
-      <button class="drawer-close" onclick="closeEl('mDrawer'); resetDrawer();">
+      <button class="modal-close" onclick="closeEl('mDrawer'); resetDrawer();">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
 
-    <div class="drawer-body">
+    <div class="modal-body">
       <div class="summary-box">
         <div class="summary-row"><span class="k">Status</span><span class="v" id="dStatus">Aktif</span></div>
         <div class="summary-row"><span class="k">Layanan berjalan</span><span class="v" id="dLayanan">Cuci + Kering</span></div>
