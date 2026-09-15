@@ -81,6 +81,10 @@
         <div class="topbar-sub">Pusat penanganan kendala mesin &amp; kompensasi pelanggan</div>
       </div>
       <div class="topbar-right">
+        <div style="position:relative; margin-right:16px; cursor:pointer; color:var(--text); display:flex; align-items:center;">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          <span style="position:absolute; top:-2px; right:-2px; width:10px; height:10px; background:var(--err); border-radius:50%; border:2px solid #fff;"></span>
+        </div>
         <div class="clock" id="liveClock"><b>09:41:07</b><span>Kamis, hari ini</span></div>
         <div class="avatar">RA</div>
       </div>
@@ -111,15 +115,7 @@
           </div>
         </div>
 
-        <div class="gs-card">
-          <div class="gs-icon amber">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
-          </div>
-          <div class="gs-body">
-            <div class="gs-val amber">1</div>
-            <div class="gs-label">Perlu Perawatan · Tidak Mendesak</div>
-          </div>
-        </div>
+
 
         <div class="gs-card">
           <div class="gs-icon ok">
@@ -155,7 +151,14 @@
             <h3>Gangguan Aktif — Perlu Tindakan</h3>
             <p>Diurutkan dari yang paling mendesak — kerjakan dari atas ke bawah</p>
           </div>
-          <span class="badge err"><span class="dot"></span>3 Mesin Bermasalah</span>
+          <div style="display:flex; gap:10px; align-items:center;">
+            <select id="filterGangguan" class="field" style="margin-bottom:0; padding:6px 10px; width:auto;" onchange="filterGangguanGrid(this.value)">
+              <option value="semua">Semua Mesin</option>
+              <option value="cuci">Mesin Cuci</option>
+              <option value="pengering">Mesin Pengering</option>
+            </select>
+            <span class="badge err"><span class="dot"></span>3 Mesin Bermasalah</span>
+          </div>
         </div>
         <div class="card-body">
 
@@ -178,7 +181,7 @@
                 <span class="badge err"><span class="dot"></span>Pelanggan Menunggu</span>
               </div>
               <div class="gc-body">
-                <div class="gc-desc">Air tidak mengalir, siklus berhenti di menit ke-18 dari 40 menit. Restart mesin begitu pelanggan tiba — refund otomatis, pelanggan tidak bayar ulang.</div>
+                <div class="gc-desc">Mesin ada gangguan. Restart mesin begitu pelanggan tiba — refund otomatis, pelanggan tidak bayar ulang.</div>
               </div>
               <div class="gc-footer">
                 <a href="dummy-restart.html" class="gc-btn-main" style="text-decoration:none;">
@@ -208,7 +211,7 @@
                 <span class="badge off">Offline</span>
               </div>
               <div class="gc-body">
-                <div class="gc-desc">Mesin berhenti mengirim status ke sistem — kemungkinan listrik atau kabel jaringan terlepas. Cek kabel daya &amp; koneksi di outlet, atau hubungi teknisi.</div>
+                <div class="gc-desc">Mesin ada gangguan. Cek kabel daya &amp; koneksi di outlet, atau hubungi teknisi.</div>
               </div>
               <div class="gc-footer">
                 <button class="gc-btn-main" id="btn-periksa-02" onclick="openConfirm('confirm-periksa', 'Mesin Cuci #02', 'Tandai Sudah Diperiksa', 'Pastikan Anda sudah memeriksa langsung kabel daya dan koneksi jaringan mesin ini.')">
@@ -222,35 +225,7 @@
               </div>
             </div>
 
-            <!-- ─── Kartu 3: Tidak mendesak — perawatan ─── -->
-            <div class="gangguan-card gc-amber" id="gc-kering05">
-              <div class="gc-accent"></div>
-              <div class="gc-header">
-                <div class="gc-header-left">
-                  <div class="gc-machine-icon amber">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h3M18 12h3M12 3v3M12 18v3"/><circle cx="12" cy="12" r="4"/></svg>
-                  </div>
-                  <div>
-                    <div class="gc-name">Mesin Pengering #05</div>
-                    <div class="gc-sub">Dilaporkan kurang panas · masih bisa dipakai</div>
-                  </div>
-                </div>
-                <span class="badge amber">Tidak Mendesak</span>
-              </div>
-              <div class="gc-body">
-                <div class="gc-desc">Pelanggan melapor hasil pengeringan kurang panas — kemungkinan filter lint tersumbat. Bersihkan filter sebelum dipakai pelanggan berikutnya.</div>
-              </div>
-              <div class="gc-footer">
-                <button class="gc-btn-main" id="btn-selesai-05" onclick="openConfirm('confirm-selesai', 'Mesin Pengering #05', 'Tandai Selesai Diperbaiki', 'Konfirmasi bahwa filter sudah dibersihkan dan mesin siap dipakai pelanggan.')">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>
-                  Tandai Selesai Diperbaiki
-                </button>
-                <button class="gc-btn-secondary" id="btn-emergency-05" onclick="openDrawerWithCode('Mesin Pengering #05', 'err', '—')">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  Kontrol Darurat Mesin
-                </button>
-              </div>
-            </div>
+
 
           </div><!-- /gangguan-grid -->
 
@@ -324,20 +299,20 @@
   </main>
 </div><!-- /app -->
 
-<!-- ===== DRAWER: KONTROL DARURAT ===== -->
-<div class="overlay" id="mDrawer">
-  <div class="drawer">
-    <div class="drawer-head">
+<!-- ===== MODAL: KONTROL DARURAT ===== -->
+<div class="modal-overlay" id="mDrawer">
+  <div class="modal">
+    <div class="modal-head">
       <div>
         <h3 id="dCode">Mesin Cuci #04</h3>
-        <p id="dSub">Gangguan — perlu tindakan</p>
+        <p id="dSub">Mesin ada gangguan — perlu tindakan</p>
       </div>
-      <button class="drawer-close" onclick="closeEl('mDrawer'); resetDrawer();">
+      <button class="modal-close" onclick="closeEl('mDrawer'); resetDrawer();">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
 
-    <div class="drawer-body">
+    <div class="modal-body">
       <div class="summary-box">
         <div class="summary-row"><span class="k">Status</span><span class="v" id="dStatus">Gangguan</span></div>
         <div class="summary-row"><span class="k">Layanan</span><span class="v" id="dLayanan">Cuci saja</span></div>
@@ -615,6 +590,19 @@
 
     const countEl = document.getElementById('historyCount');
     if(countEl) countEl.textContent = visible + ' catatan';
+  }
+
+  /* ---- Filter Gangguan Grid ---- */
+  function filterGangguanGrid(tipe){
+    const cards = document.querySelectorAll('.gangguan-grid .gangguan-card');
+    cards.forEach(card => {
+      const isCuci = card.querySelector('.gc-name').textContent.toLowerCase().includes('cuci');
+      if (tipe === 'semua' || (tipe === 'cuci' && isCuci) || (tipe === 'pengering' && !isCuci)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
   }
 </script>
 </body>

@@ -64,26 +64,30 @@
         <div class="topbar-sub">Pelanggan MW-284688 mendatangi admin karena gangguan pada Cuci #04</div>
       </div>
       <div class="topbar-right">
+        <div style="position:relative; margin-right:16px; cursor:pointer; color:var(--text); display:flex; align-items:center;">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          <span style="position:absolute; top:-2px; right:-2px; width:10px; height:10px; background:var(--err); border-radius:50%; border:2px solid #fff;"></span>
+        </div>
         <div class="clock" id="liveClock"><b>09:41:07</b><span>Kamis, hari ini</span></div>
         <div class="avatar">RA</div>
       </div>
     </div>
 
-    <div class="content" style="max-width:640px;">
+    <div class="content">
 
-      <div class="mini-stat-row" style="margin-bottom:20px;">
+      <div class="mini-stat-row" style="margin-bottom:10px;">
         <div class="mini-stat">
           <div class="ms-val" style="color:var(--text);">Rp 1.000.000</div>
           <div class="ms-label">Saldo Uang Dummy</div>
         </div>
       </div>
 
-      <div class="alert info" style="margin-bottom:20px;">
+      <div class="alert info" style="margin-bottom:10px;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l9 4.9V17L12 22l-9-4.9V6.9z"/><path d="M12 8v5M12 16h.01"/></svg>
         <span><b>Catatan Penting:</b> Uang dummy hanya boleh digunakan untuk mengaktifkan/start ulang mesin bagi pelanggan yang mengalami gangguan atau kegagalan sistem.</span>
       </div>
 
-      <div class="alert danger" style="margin-bottom:20px;">
+      <div class="alert danger" style="margin-bottom:10px;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
         <span><b>Transaksi asli:</b> MW-284688 · Cuci #04 · Cuci saja 40 menit · terhenti pada menit ke-18 karena gangguan.</span>
       </div>
@@ -103,18 +107,10 @@
 
           <!-- STEP 1: Pilih mesin (DM2) -->
           <div id="dm-step1">
-            <div class="section-title" style="font-family:var(--font-display); font-weight:600; font-size:14.5px; margin-bottom:12px;">Pilih mesin pengganti</div>
+            <div class="section-title" style="font-family:var(--font-display); font-weight:600; font-size:14.5px; margin-bottom:12px;">Pilih mesin pengganti (yang tersedia)</div>
 
             <label class="rd-option">
               <input type="radio" name="dmMesin" checked>
-              <span class="radio"></span>
-              <div>
-                <div style="font-weight:700; font-size:13.5px;">Mesin Cuci #04 (sama) — sudah diperbaiki</div>
-                <div class="muted">Gunakan mesin yang sama setelah dicek admin.</div>
-              </div>
-            </label>
-            <label class="rd-option">
-              <input type="radio" name="dmMesin">
               <span class="radio"></span>
               <div>
                 <div style="font-weight:700; font-size:13.5px;">Mesin Cuci #01 — tersedia</div>
@@ -137,12 +133,18 @@
             <div class="summary-box mt-4" style="margin-bottom:16px;">
               <div class="summary-row"><span class="k">Layanan awal</span><span class="v">Cuci saja · 40 menit</span></div>
               <div class="summary-row"><span class="k">Waktu berjalan sebelum gangguan</span><span class="v">18 menit</span></div>
-              <div class="summary-row"><span class="k">Sisa yang belum selesai</span><span class="v" style="color:var(--maroon);">22 menit</span></div>
+              <div class="summary-row"><span class="k">Sisa waktu yang belum selesai</span><span class="v" style="color:var(--err); font-weight:700;">22 menit</span></div>
             </div>
             <div class="field">
-              <label>Durasi start ulang (menit)</label>
-              <input type="number" value="22" min="1" max="40">
-              <div class="hint">Bisa disesuaikan bila ada pertimbangan lain, mis. dibulatkan menjadi siklus penuh.</div>
+              <label>Pilih durasi start ulang (kelipatan 5 menit)</label>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <input type="range" id="durasiSlider" min="5" max="60" step="5" value="20" style="flex:1;" oninput="updateDummyCost(this.value)">
+                <span id="durasiLabel" style="font-weight:bold; font-size:15px; width:70px; text-align:right;">20 menit</span>
+              </div>
+              <div class="hint">Karena sisa 22 menit, durasi terdekat adalah 20 atau 25 menit.</div>
+              <div id="dummyCostDisplay" style="margin-top:10px; font-weight:600; color:var(--text); padding:10px; background:var(--page-bg); border:1px solid var(--border); border-radius:var(--radius-md);">
+                Estimasi Uang Dummy terpakai: Rp 10.000 <span class="muted" style="font-weight:normal; display:block; font-size:11px;">(Harga didapatkan otomatis dari setting Owner)</span>
+              </div>
             </div>
           </div>
 
@@ -282,6 +284,13 @@
 
   function dmBack(){
     if(dmStep > 1){ dmStep--; renderWizard(); }
+  }
+
+  function updateDummyCost(val){
+    document.getElementById('durasiLabel').textContent = val + ' menit';
+    // Contoh dummy logic: Rp 500 per menit
+    const cost = val * 500;
+    document.getElementById('dummyCostDisplay').innerHTML = `Estimasi Uang Dummy terpakai: Rp ${cost.toLocaleString('id-ID')} <span class="muted" style="font-weight:normal; display:block; font-size:11px;">(Harga didapatkan otomatis dari setting Owner)</span>`;
   }
 
   renderWizard();
