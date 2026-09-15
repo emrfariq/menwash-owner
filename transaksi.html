@@ -1,359 +1,342 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menwash Admin — Transaksi</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23D25353'/%3E%3Ccircle cx='12' cy='13.3' r='6' fill='none' stroke='%23FFEAD3' stroke-width='1.8'/%3E%3Cpath d='M9.1 13.3c0-1.6 1.3-2.9 2.9-2.9s2.9 1.3 2.9 2.9-1.3 2.9-2.9 2.9' fill='none' stroke='%23FFEAD3' stroke-width='1.8' stroke-linecap='round'/%3E%3Cpath d='M8.3 4.6h1M11.5 4.6h1M14.7 4.6h1' stroke='%23FFEAD3' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/admin.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menwash Owner — Transaksi</title>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23D25353'/%3E%3Ccircle cx='12' cy='13.3' r='6' fill='none' stroke='%23FFEAD3' stroke-width='1.8'/%3E%3Cpath d='M9.1 13.3c0-1.6 1.3-2.9 2.9-2.9s2.9 1.3 2.9 2.9-1.3 2.9-2.9 2.9' fill='none' stroke='%23FFEAD3' stroke-width='1.8' stroke-linecap='round'/%3E%3Cpath d='M8.3 4.6h1M11.5 4.6h1M14.7 4.6h1' stroke='%23FFEAD3' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/admin.css">
 </head>
+
 <body>
 
-<div class="app">
+  <div class="app">
 
-  <!-- ===== SIDEBAR ===== -->
-  <aside class="sidebar">
-    <div class="brand">
-      <div class="brand-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="13" r="7"/><path d="M9 13c0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3"/><path d="M8 4h1M12 4h1M16 4h1"/></svg>
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="12" cy="13" r="7" />
+            <path d="M9 13c0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3" />
+            <path d="M8 4h1M12 4h1M16 4h1" />
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name">Menwash</div>
+          <div class="brand-sub">OWNER PANEL</div>
+        </div>
       </div>
-      <div>
-        <div class="brand-name">Menwash</div>
-        <div class="brand-sub">ADMIN PANEL</div>
-      </div>
-    </div>
 
-    <nav class="nav">
-      <a href="dashboard.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
-        Dashboard
-      </a>
-      <div class="nav-group">
-        <a href="mesin.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="7"/><path d="M9 13c0-1.7 1.3-3 3-3s3 1.3 3 3"/><path d="M8 4h1M12 4h1M16 4h1"/></svg>
-          Mesin
+      <nav class="nav">
+        <a href="dashboard.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="3" y="3" width="7" height="9" rx="1.5" />
+            <rect x="14" y="3" width="7" height="5" rx="1.5" />
+            <rect x="14" y="12" width="7" height="9" rx="1.5" />
+            <rect x="3" y="16" width="7" height="5" rx="1.5" />
+          </svg>
+          Dashboard
         </a>
-        <div class="nav-sub">
-          <a href="mesin.html">Semua Mesin</a>
-          <a href="gangguan.html" class="sub-danger" style="display:flex; align-items:center; justify-content:space-between;">
-            <span>Mesin Gangguan</span>
-            <span class="badge err" style="padding:2px 7px; font-size:10px; border-radius:99px;">1</span>
+        <div class="nav-group">
+          <a href="mesin.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="13" r="7" />
+              <path d="M9 13c0-1.7 1.3-3 3-3s3 1.3 3 3" />
+              <path d="M8 4h1M12 4h1M16 4h1" />
+            </svg>
+            Mesin
           </a>
-        </div>
-      </div>
-      <a href="transaksi.html" class="active">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v4H4zM4 12h16M4 16h10M4 20h6"/></svg>
-        Transaksi
-      </a>
-      <a href="progress.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>
-        Progress
-      </a>
-    </nav>
-
-    <div class="sidebar-outlet">
-      <div class="o-name">Outlet Laundry Cendrawasih</div>
-      <div class="o-addr">Jl. Raya Cendrawasih No. 1F, Bintaro, Tangerang Selatan</div>
-    </div>
-
-    <div class="logout-row">
-      <a href="login.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
-        Keluar
-      </a>
-    </div>
-  </aside>
-
-  <!-- ===== MAIN ===== -->
-  <main class="main">
-
-    <div class="topbar">
-      <div>
-        <div class="topbar-title">Transaksi</div>
-        <div class="topbar-sub">Riwayat transaksi lengkap outlet</div>
-      </div>
-      <div class="topbar-right">
-        <div style="position:relative; margin-right:16px; cursor:pointer; color:var(--text); display:flex; align-items:center;">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
-          <span style="position:absolute; top:-2px; right:-2px; width:10px; height:10px; background:var(--err); border-radius:50%; border:2px solid #fff;"></span>
-        </div>
-        <div class="clock" id="liveClock"><b>09:41:07</b><span>Kamis, hari ini</span></div>
-        <div class="avatar">RA</div>
-      </div>
-    </div>
-
-    <div class="content">
-
-      <div class="card" style="margin-bottom:18px;">
-        <div class="card-body" style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
-          <div class="chip-row">
-            <div class="fchip active" data-filter="semua">Semua</div>
-            <div class="fchip" data-filter="qris">QRIS</div>
-            <div class="fchip" data-filter="tunai">Tunai</div>
-            <div class="fchip" data-filter="dummy">Uang Dummy</div>
-            <div class="fchip" data-filter="gagal">Gagal / Refund</div>
+          <div class="nav-sub">
+            <a href="mesin.html">Semua Mesin</a>
+            <a href="gangguan.html" class="sub-danger"
+              style="display:flex; align-items:center; justify-content:space-between;">
+              <span>Mesin Gangguan</span>
+              <span class="badge err" style="padding:2px 7px; font-size:10px; border-radius:99px;">1</span>
+            </a>
           </div>
         </div>
-      </div>
+        <a href="transaksi.html" class="active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4 4h16v4H4zM4 12h16M4 16h10M4 20h6" />
+          </svg>
+          Transaksi
+        </a>
+        <a href="progress.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 6v6l4 2" />
+            <circle cx="12" cy="12" r="9" />
+          </svg>
+          Progress
+        </a>
+        <a href="settings.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path
+              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          Pengaturan
+        </a>
+      </nav>
 
-      <div class="card">
-        <div class="card-head">
-          <div><h3>Riwayat transaksi</h3><p id="txCountLabel">48 transaksi hari ini</p></div>
-        </div>
-        <div class="card-body" style="padding:0;">
-          <table>
-            <thead>
-              <tr>
-                <th>ID Transaksi</th><th>Mesin</th><th>Layanan</th><th>Metode</th><th>Status</th><th>Waktu</th><th style="text-align:right;">Nominal</th>
-              </tr>
-            </thead>
-            <tbody id="txTableBody">
-              <tr data-filter="qris" data-amount="20000">
-                <td class="tx-id">MW-284719</td><td>Cuci #03 → Pengering #01</td><td>Cuci + Kering</td>
-                <td><span class="badge busy"><span class="dot"></span>QRIS</span></td>
-                <td><span class="badge busy"><span class="dot"></span>Berjalan</span></td>
-                <td class="mono">09:31</td><td style="text-align:right; font-weight:700;">Rp 20.000</td>
-              </tr>
-              <tr data-filter="tunai" data-amount="12000">
-                <td class="tx-id">MW-TX-9925</td><td>Cuci #07</td><td>Cuci saja</td>
-                <td><span class="badge amber"><span class="dot"></span>Tunai</span></td>
-                <td><span class="badge busy"><span class="dot"></span>Berjalan</span></td>
-                <td class="mono">09:10</td><td style="text-align:right; font-weight:700;">Rp 12.000</td>
-              </tr>
-              <tr data-filter="qris gagal" data-amount="12000">
-                <td class="tx-id">MW-284688</td><td>Cuci #04</td><td>Cuci saja</td>
-                <td><span class="badge busy"><span class="dot"></span>QRIS</span></td>
-                <td><span class="badge err"><span class="dot"></span>Gagal / Gangguan</span></td>
-                <td class="mono">08:52</td><td style="text-align:right; font-weight:700;">Rp 12.000</td>
-              </tr>
-              <tr data-filter="qris" data-amount="10000">
-                <td class="tx-id">MW-284710</td><td>Pengering #04</td><td>Kering saja</td>
-                <td><span class="badge busy"><span class="dot"></span>QRIS</span></td>
-                <td><span class="badge busy"><span class="dot"></span>Berjalan</span></td>
-                <td class="mono">08:47</td><td style="text-align:right; font-weight:700;">Rp 10.000</td>
-              </tr>
-              <tr data-filter="qris" data-amount="12000">
-                <td class="tx-id">MW-284670</td><td>Cuci #02</td><td>Cuci saja</td>
-                <td><span class="badge busy"><span class="dot"></span>QRIS</span></td>
-                <td><span class="badge ok"><span class="dot"></span>Selesai</span></td>
-                <td class="mono">08:15</td><td style="text-align:right; font-weight:700;">Rp 12.000</td>
-              </tr>
-              <tr data-filter="tunai" data-amount="10000">
-                <td class="tx-id">MW-284655</td><td>Pengering #06</td><td>Kering saja</td>
-                <td><span class="badge amber"><span class="dot"></span>Tunai</span></td>
-                <td><span class="badge ok"><span class="dot"></span>Selesai</span></td>
-                <td class="mono">07:58</td><td style="text-align:right; font-weight:700;">Rp 10.000</td>
-              </tr>
-              <tr data-filter="dummy" data-amount="0">
-                <td class="tx-id">MW-DM-0042</td><td>Cuci #04 (restart)</td><td>Cuci saja · sisa 15 menit</td>
-                <td><span class="badge amber"><span class="dot"></span>Uang Dummy</span></td>
-                <td><span class="badge ok"><span class="dot"></span>Berjalan</span></td>
-                <td class="mono">09:34</td><td style="text-align:right; font-weight:700;">Rp 0</td>
-              </tr>
-              <tr data-filter="qris gagal" data-amount="12000">
-                <td class="tx-id">MW-284688</td><td>Cuci #04</td><td>Cuci saja</td>
-                <td><span class="badge busy"><span class="dot"></span>QRIS</span></td>
-                <td><span class="badge err"><span class="dot"></span>Refund otomatis</span></td>
-                <td class="mono">09:34</td><td style="text-align:right; font-weight:700; color:var(--text-soft); text-decoration:line-through;">Rp 12.000</td>
-              </tr>
-            </tbody>
-          </table>
-          <div id="txEmpty" class="empty-state" style="display:none;">
-            <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8l2-4h14l2 4M3 8v10a2 2 0 002 2h14a2 2 0 002-2V8M3 8h18M9 12h6"/></svg>
-            <div>Tidak ada transaksi untuk filter ini.</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-</div>
-
-<!-- ===== MODAL: AKTIFKAN MESIN TUNAI (sama seperti Dashboard) ===== -->
-<div class="modal-overlay" id="qaModal">
-  <div class="modal">
-    <div class="modal-head">
-      <div>
-        <h3>Aktifkan mesin untuk pelanggan tunai</h3>
-        <p>Untuk transaksi yang dibayar langsung di outlet</p>
-      </div>
-      <button class="modal-close" onclick="closeEl('qaModal')">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
-    </div>
-
-    <div class="modal-body">
-      <div id="qa-step1">
-        <div class="field required">
-          <label>Pilih mesin</label>
-          <select id="qaMesin">
-            <option>Mesin Cuci #01 — Tersedia</option>
-            <option>Mesin Cuci #05 — Tersedia</option>
-            <option>Mesin Pengering #02 — Tersedia</option>
-            <option>Mesin Pengering #03 — Tersedia</option>
+      <div class="sidebar-outlet" style="padding: 12px 16px;">
+        <div class="field" style="margin-bottom:0;">
+          <select id="globalOutletSelect"
+            style="width:100%; background:var(--page-bg); border-color:var(--border-soft); font-weight:700; font-size: 13px;">
+            <option value="semua">Semua Outlet (3)</option>
+            <option value="cendrawasih">Outlet Cendrawasih</option>
+            <option value="merpati">Outlet Merpati</option>
+            <option value="rajawali">Outlet Rajawali</option>
           </select>
         </div>
-        <div class="field required">
-          <label>Layanan</label>
-          <div class="seg-row">
-            <div class="seg active" data-group="layanan" data-value="Cuci saja">Cuci saja</div>
-            <div class="seg" data-group="layanan" data-value="Kering saja">Kering saja</div>
-            <div class="seg" data-group="layanan" data-value="Cuci + Kering">Cuci + Kering</div>
-          </div>
+      </div>
+
+      <div class="logout-row">
+        <a href="login.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+            <path d="M16 17l5-5-5-5M21 12H9" />
+          </svg>
+          Keluar
+        </a>
+      </div>
+    </aside>
+
+    <!-- ===== MAIN ===== -->
+    <main class="main">
+
+      <div class="topbar">
+        <div>
+          <div class="topbar-title">Transaksi</div>
+          <div class="topbar-sub">Riwayat transaksi lengkap outlet</div>
         </div>
-        <div class="field required">
-          <label>Durasi</label>
-          <div class="seg-row">
-            <div class="seg" data-group="durasi" data-value="30 menit">30 menit</div>
-            <div class="seg active" data-group="durasi" data-value="40 menit">40 menit</div>
-            <div class="seg" data-group="durasi" data-value="60 menit">60 menit</div>
+        <div class="topbar-right">
+          <div
+            style="position:relative; margin-right:16px; cursor:pointer; color:var(--text); display:flex; align-items:center;">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 01-3.46 0" />
+            </svg>
+            <span
+              style="position:absolute; top:-2px; right:-2px; width:10px; height:10px; background:var(--err); border-radius:50%; border:2px solid #fff;"></span>
           </div>
-        </div>
-        <div class="alert info">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l9 4.9V17L12 22l-9-4.9V6.9z"/><path d="M12 8v5M12 16h.01"/></svg>
-          <span>Mesin akan menyala langsung tanpa menunggu pembayaran QRIS. Pastikan uang tunai sudah diterima.</span>
+          <div class="clock" id="liveClock"><b>09:41:07</b><span>Kamis, hari ini</span></div>
+          <div class="avatar">RA</div>
         </div>
       </div>
 
-      <div id="qa-step2" style="display:none;">
-        <div class="summary-box">
-          <div class="summary-row"><span class="k">Mesin</span><span class="v" id="cfMesin">Mesin Cuci #01</span></div>
-          <div class="summary-row"><span class="k">Layanan</span><span class="v" id="cfLayanan">Cuci saja</span></div>
-          <div class="summary-row"><span class="k">Durasi</span><span class="v" id="cfDurasi">40 menit</span></div>
-          <div class="summary-row"><span class="k">Metode</span><span class="v">Tunai — dicatat manual</span></div>
-          <div class="summary-row"><span class="k">Total</span><span class="v" style="color:var(--maroon); font-size:15px;">Rp 12.000</span></div>
-        </div>
-        <div class="alert danger mt-14" id="qaWarnBox">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
-          <span>Mesin akan langsung menyala setelah kamu menekan tombol di bawah. Aksi ini tidak bisa dibatalkan.</span>
-        </div>
-        <div class="processing-box mt-14" id="qaProcessingBox" style="display:none;">
-          <div class="p-spin"></div>
-          <div class="p-text"><b>Memproses…</b><span>Perintah diterima sistem (202 Accepted) — menunggu mesin ACK melalui MQTT.</span></div>
-        </div>
-      </div>
+      <div class="content">
 
-      <div id="qa-step3" style="display:none;">
-        <div style="text-align:center; padding:6px 0 4px;">
-          <div style="width:56px;height:56px;border-radius:50%;background:var(--ok-bg);color:var(--ok);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
-            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>
+        <div class="card" style="margin-bottom:18px;">
+          <div class="card-body"
+            style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+            <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+              <div class="chip-row">
+                <div class="fchip active" data-filter="semua">Semua</div>
+                <div class="fchip" data-filter="qris">QRIS</div>
+                <div class="fchip" data-filter="tunai">Tunai</div>
+                <div class="fchip" data-filter="dummy">Uang Dummy</div>
+                <div class="fchip" data-filter="gagal">Gagal / Refund</div>
+              </div>
+              <div class="field" style="margin-bottom:0; min-width:120px;">
+                <select style="padding: 6px 10px; font-size:13px;">
+                  <option value="semua">Semua Layanan</option>
+                  <option value="cuci">Cuci Saja</option>
+                  <option value="kering">Kering Saja</option>
+                  <option value="cucikering">Cuci + Kering</option>
+                </select>
+              </div>
+              <div class="field" style="margin-bottom:0; min-width:120px;">
+                <select style="padding: 6px 10px; font-size:13px;">
+                  <option value="semua">Semua Waktu</option>
+                  <option value="hari">Hari ini</option>
+                  <option value="minggu">Minggu ini</option>
+                  <option value="bulan">Bulan ini</option>
+                </select>
+              </div>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <button class="btn btn-secondary btn-sm" style="background:#fff; border:1px solid var(--border-soft);">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                </svg>
+                Export CSV
+              </button>
+              <button class="btn btn-secondary btn-sm" style="background:#fff; border:1px solid var(--border-soft);">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                </svg>
+                Export PDF
+              </button>
+            </div>
           </div>
-          <div style="font-weight:800; font-size:15.5px;">Mesin berhasil dinyalakan</div>
-          <div class="muted mt-4">Transaksi tunai sudah tercatat di sistem.</div>
         </div>
-        <div class="summary-box mt-14">
-          <div class="summary-row"><span class="k">ID Transaksi</span><span class="v">MW-TX-9932</span></div>
-          <div class="summary-row"><span class="k">Mesin</span><span class="v" id="cfMesin2">Mesin Cuci #01</span></div>
-          <div class="summary-row"><span class="k">Dicatat oleh</span><span class="v">Rani Admin</span></div>
+
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <h3>Riwayat transaksi</h3>
+              <p id="txCountLabel">48 transaksi hari ini</p>
+            </div>
+          </div>
+          <div class="card-body" style="padding:0;">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID Transaksi</th>
+                  <th>Outlet</th>
+                  <th>Mesin</th>
+                  <th>Layanan</th>
+                  <th>Metode</th>
+                  <th>Status</th>
+                  <th>Waktu</th>
+                  <th style="text-align:right;">Nominal</th>
+                </tr>
+              </thead>
+              <tbody id="txTableBody">
+                <tr data-filter="qris" data-amount="20000">
+                  <td class="tx-id">MW-284719</td>
+                  <td>Cendrawasih</td>
+                  <td>Cuci #03 → Pengering #01</td>
+                  <td>Cuci + Kering</td>
+                  <td><span class="badge busy"><span class="dot"></span>QRIS</span></td>
+                  <td><span class="badge busy"><span class="dot"></span>Berjalan</span></td>
+                  <td class="mono">09:31</td>
+                  <td style="text-align:right; font-weight:700;">Rp 20.000</td>
+                </tr>
+                <tr data-filter="tunai" data-amount="12000">
+                  <td class="tx-id">MW-TX-9925</td>
+                  <td>Cendrawasih</td>
+                  <td>Cuci #07</td>
+                  <td>Cuci saja</td>
+                  <td><span class="badge amber"><span class="dot"></span>Tunai</span></td>
+                  <td><span class="badge busy"><span class="dot"></span>Berjalan</span></td>
+                  <td class="mono">09:10</td>
+                  <td style="text-align:right; font-weight:700;">Rp 12.000</td>
+                </tr>
+                <tr data-filter="qris gagal" data-amount="12000">
+                  <td class="tx-id">MW-284688</td>
+                  <td>Merpati</td>
+                  <td>Cuci #04</td>
+                  <td>Cuci saja</td>
+                  <td><span class="badge busy"><span class="dot"></span>QRIS</span></td>
+                  <td><span class="badge err"><span class="dot"></span>Gagal / Gangguan</span></td>
+                  <td class="mono">08:52</td>
+                  <td style="text-align:right; font-weight:700;">Rp 12.000</td>
+                </tr>
+                <tr data-filter="qris" data-amount="10000">
+                  <td class="tx-id">MW-284710</td>
+                  <td>Rajawali</td>
+                  <td>Pengering #04</td>
+                  <td>Kering saja</td>
+                  <td><span class="badge busy"><span class="dot"></span>QRIS</span></td>
+                  <td><span class="badge busy"><span class="dot"></span>Berjalan</span></td>
+                  <td class="mono">08:47</td>
+                  <td style="text-align:right; font-weight:700;">Rp 10.000</td>
+                </tr>
+                <tr data-filter="qris" data-amount="12000">
+                  <td class="tx-id">MW-284670</td>
+                  <td>Cendrawasih</td>
+                  <td>Cuci #02</td>
+                  <td>Cuci saja</td>
+                  <td><span class="badge busy"><span class="dot"></span>QRIS</span></td>
+                  <td><span class="badge ok"><span class="dot"></span>Selesai</span></td>
+                  <td class="mono">08:15</td>
+                  <td style="text-align:right; font-weight:700;">Rp 12.000</td>
+                </tr>
+                <tr data-filter="tunai" data-amount="10000">
+                  <td class="tx-id">MW-284655</td>
+                  <td>Merpati</td>
+                  <td>Pengering #06</td>
+                  <td>Kering saja</td>
+                  <td><span class="badge amber"><span class="dot"></span>Tunai</span></td>
+                  <td><span class="badge ok"><span class="dot"></span>Selesai</span></td>
+                  <td class="mono">07:58</td>
+                  <td style="text-align:right; font-weight:700;">Rp 10.000</td>
+                </tr>
+                <tr data-filter="dummy" data-amount="0">
+                  <td class="tx-id">MW-DM-0042</td>
+                  <td>Cendrawasih</td>
+                  <td>Cuci #04 (restart)</td>
+                  <td>Cuci saja · sisa 15 menit</td>
+                  <td><span class="badge amber"><span class="dot"></span>Uang Dummy</span></td>
+                  <td><span class="badge ok"><span class="dot"></span>Berjalan</span></td>
+                  <td class="mono">09:34</td>
+                  <td style="text-align:right; font-weight:700;">Rp 0</td>
+                </tr>
+                <tr data-filter="qris gagal" data-amount="12000">
+                  <td class="tx-id">MW-284688</td>
+                  <td>Merpati</td>
+                  <td>Cuci #04</td>
+                  <td>Cuci saja</td>
+                  <td><span class="badge busy"><span class="dot"></span>QRIS</span></td>
+                  <td><span class="badge err"><span class="dot"></span>Refund otomatis</span></td>
+                  <td class="mono">09:34</td>
+                  <td style="text-align:right; font-weight:700; color:var(--text-soft); text-decoration:line-through;">
+                    Rp 12.000</td>
+                </tr>
+              </tbody>
+            </table>
+            <div id="txEmpty" class="empty-state" style="display:none;">
+              <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M3 8l2-4h14l2 4M3 8v10a2 2 0 002 2h14a2 2 0 002-2V8M3 8h18M9 12h6" />
+              </svg>
+              <div>Tidak ada transaksi untuk filter ini.</div>
+            </div>
+          </div>
         </div>
+
       </div>
-    </div>
-
-    <div class="modal-foot" id="qaFoot1">
-      <button class="btn btn-ghost" onclick="closeEl('qaModal')">Batal</button>
-      <button class="btn btn-primary btn-block" onclick="showStep('qa',2)">Lanjutkan</button>
-    </div>
-    <div class="modal-foot" id="qaFoot2" style="display:none;">
-      <button class="btn btn-ghost" onclick="showStep('qa',1)">Kembali</button>
-      <button class="btn btn-primary btn-block" id="qaActivateBtn" onclick="qaActivate()">Nyalakan Mesin Sekarang</button>
-    </div>
-    <div class="modal-foot" id="qaFoot3" style="display:none;">
-      <button class="btn btn-primary btn-block" onclick="closeEl('qaModal'); showStep('qa',1)">Selesai</button>
-    </div>
-
+    </main>
   </div>
-</div>
 
-<div class="toast" id="toast">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>
-  <span>Berhasil</span>
-</div>
+  <!-- Modal & FAB dihapus untuk UI Owner -->
 
-<script src="assets/admin.js"></script>
-<script>
-  function qaActivate(){
-    document.getElementById('qaWarnBox').style.display = 'none';
-    document.getElementById('qaProcessingBox').style.display = 'flex';
-    document.getElementById('qaActivateBtn').disabled = true;
-    document.querySelector('#qaFoot2 .btn-ghost').disabled = true;
-    simulateAsyncCommand(()=>{
-      showStep('qa',3);
-      showToast('Mesin dinyalakan & transaksi tunai tercatat');
-      document.getElementById('qaWarnBox').style.display = 'flex';
-      document.getElementById('qaProcessingBox').style.display = 'none';
-      document.getElementById('qaActivateBtn').disabled = false;
-      document.querySelector('#qaFoot2 .btn-ghost').disabled = false;
-    });
-  }
+  <script>
+    /* ===== Filter transaksi (chip: Semua/QRIS/Tunai/Uang Dummy/Gagal-Refund) ===== */
+    const txRows = document.querySelectorAll('#txTableBody tr');
 
-  /* ===== Filter transaksi (chip: Semua/QRIS/Tunai/Uang Dummy/Gagal-Refund) ===== */
-  const txRows = document.querySelectorAll('#txTableBody tr');
-
-  function formatRupiah(n){
-    return 'Rp ' + n.toLocaleString('id-ID');
-  }
-
-  /* Catatan: tabel ini hanya memuat 8 baris contoh (bukan 48 transaksi penuh hari ini),
-     jadi label "Semua" tetap memakai angka ringkasan resmi. Total nominal dinamis hanya
-     ditampilkan saat sebuah filter aktif, dihitung dari baris contoh yang sedang tampil. */
-  function applyTxFilter(filter){
-    let visible = 0;
-    let sum = 0;
-    txRows.forEach(row=>{
-      const match = filter === 'semua' || row.dataset.filter.split(' ').includes(filter);
-      row.style.display = match ? '' : 'none';
-      if(match){ visible++; sum += Number(row.dataset.amount || 0); }
-    });
-    document.getElementById('txEmpty').style.display = visible === 0 ? 'block' : 'none';
-    document.getElementById('txCountLabel').textContent = filter === 'semua'
-      ? '48 transaksi hari ini'
-      : `${visible} transaksi ditampilkan · ${formatRupiah(sum)}`;
-  }
-
-  document.querySelectorAll('.fchip').forEach(c=>{
-    c.addEventListener('click', ()=>{
-      document.querySelectorAll('.fchip').forEach(x=>x.classList.remove('active'));
-      c.classList.add('active');
-      applyTxFilter(c.dataset.filter);
-    });
-  });
-
-  /* Deep-link dari kartu lain, mis. dashboard.html?filter=dummy — jika tidak ada, tampilkan total "Semua" */
-  (function initTxFilter(){
-    const requested = new URLSearchParams(window.location.search).get('filter');
-    const chip = requested && document.querySelector(`.fchip[data-filter="${requested}"]`);
-    if(chip){
-      document.querySelectorAll('.fchip').forEach(x=>x.classList.remove('active'));
-      chip.classList.add('active');
-      applyTxFilter(requested);
-    } else {
-      applyTxFilter('semua');
+    function formatRupiah(n) {
+      return 'Rp ' + n.toLocaleString('id-ID');
     }
-  })();
 
-  const qaObserver = new MutationObserver(()=>{
-    const s2 = document.getElementById('qa-step2').style.display !== 'none';
-    const s3 = document.getElementById('qa-step3').style.display !== 'none';
-    document.getElementById('qaFoot1').style.display = (!s2 && !s3) ? 'flex' : 'none';
-    document.getElementById('qaFoot2').style.display = (s2 && !s3) ? 'flex' : 'none';
-    document.getElementById('qaFoot3').style.display = s3 ? 'flex' : 'none';
-    if(s2 || s3){
-      document.getElementById('cfMesin').textContent = document.getElementById('qaMesin').value.split(' —')[0];
-      document.getElementById('cfMesin2').textContent = document.getElementById('qaMesin').value.split(' —')[0];
-      document.getElementById('cfLayanan').textContent = document.querySelector('.seg[data-group="layanan"].active').dataset.value;
-      document.getElementById('cfDurasi').textContent = document.querySelector('.seg[data-group="durasi"].active').dataset.value;
+    function applyTxFilter(filter) {
+      let visible = 0;
+      let sum = 0;
+      txRows.forEach(row => {
+        const match = filter === 'semua' || row.dataset.filter.split(' ').includes(filter);
+        row.style.display = match ? '' : 'none';
+        if (match) { visible++; sum += Number(row.dataset.amount || 0); }
+      });
+      document.getElementById('txEmpty').style.display = visible === 0 ? 'block' : 'none';
+      document.getElementById('txCountLabel').textContent = filter === 'semua'
+        ? '48 transaksi hari ini'
+        : `${visible} transaksi ditampilkan · ${formatRupiah(sum)}`;
     }
-  });
-  ['qa-step1','qa-step2','qa-step3'].forEach(id=>{
-    qaObserver.observe(document.getElementById(id), { attributes:true, attributeFilter:['style'] });
-  });
-</script>
-<!-- ===== GLOBAL FLOATING ACTION BUTTON (WhatsApp Style) ===== -->
-<button class="fab-activate" onclick="showStep('qa',1); openEl('qaModal')" title="Aktifkan Mesin Tunai">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>
-  <span class="fab-tooltip">Aktifkan Mesin Tunai</span>
-  <span class="fab-badge"></span>
-</button>
+
+    document.querySelectorAll('.fchip').forEach(c => {
+      c.addEventListener('click', () => {
+        document.querySelectorAll('.fchip').forEach(x => x.classList.remove('active'));
+        c.classList.add('active');
+        applyTxFilter(c.dataset.filter);
+      });
+    });
+
+    (function initTxFilter() {
+      const requested = new URLSearchParams(window.location.search).get('filter');
+      const chip = requested && document.querySelector(`.fchip[data-filter="${requested}"]`);
+      if (chip) {
+        document.querySelectorAll('.fchip').forEach(x => x.classList.remove('active'));
+        chip.classList.add('active');
+        applyTxFilter(requested);
+      } else {
+        applyTxFilter('semua');
+      }
+    })();
+  </script>
 
 </body>
+
 </html>

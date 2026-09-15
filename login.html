@@ -1,65 +1,123 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menwash Admin — Masuk</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23D25353'/%3E%3Ccircle cx='12' cy='13.3' r='6' fill='none' stroke='%23FFEAD3' stroke-width='1.8'/%3E%3Cpath d='M9.1 13.3c0-1.6 1.3-2.9 2.9-2.9s2.9 1.3 2.9 2.9-1.3 2.9-2.9 2.9' fill='none' stroke='%23FFEAD3' stroke-width='1.8' stroke-linecap='round'/%3E%3Cpath d='M8.3 4.6h1M11.5 4.6h1M14.7 4.6h1' stroke='%23FFEAD3' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/admin.css">
-<style>
-  body{
-    display:flex; align-items:center; justify-content:center; min-height:100vh;
-    background:radial-gradient(circle at 15% 10%, #5c2323 0%, #2A1414 55%), var(--sidebar-1);
-    overflow:hidden; position:relative;
-  }
-  .login-wrap{ width:380px; max-width:92vw; }
-  .login-logo{ display:flex; flex-direction:column; align-items:center; margin-bottom:26px; }
-  .login-mark{
-    width:56px; height:56px; border-radius:16px; background:rgba(255,255,255,.1);
-    border:1.5px solid rgba(255,255,255,.22); display:flex; align-items:center; justify-content:center; margin-bottom:12px;
-  }
-  .login-mark svg{ width:28px; height:28px; color:#FFD9C4; }
-  .login-title{ font-family:var(--font-display); font-weight:600; font-size:20px; color:#fff; }
-  .login-sub{ font-size:12.5px; color:#D9AFA0; margin-top:2px; }
-  .login-card{ background:#fff; border-radius:var(--radius-lg); padding:26px 26px 22px; box-shadow:var(--shadow-pop); }
-  .login-foot{ text-align:center; font-size:11.5px; color:#C08F7E; margin-top:18px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menwash Owner — Masuk</title>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23D25353'/%3E%3Ccircle cx='12' cy='13.3' r='6' fill='none' stroke='%23FFEAD3' stroke-width='1.8'/%3E%3Cpath d='M9.1 13.3c0-1.6 1.3-2.9 2.9-2.9s2.9 1.3 2.9 2.9-1.3 2.9-2.9 2.9' fill='none' stroke='%23FFEAD3' stroke-width='1.8' stroke-linecap='round'/%3E%3Cpath d='M8.3 4.6h1M11.5 4.6h1M14.7 4.6h1' stroke='%23FFEAD3' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/admin.css">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: radial-gradient(circle at 15% 10%, #5c2323 0%, #2A1414 55%), var(--sidebar-1);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .login-wrap {
+      width: 380px;
+      max-width: 92vw;
+    }
+
+    .login-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .login-mark {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .1);
+      border: 1.5px solid rgba(255, 255, 255, .22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .login-mark svg {
+      width: 28px;
+      height: 28px;
+      color: #FFD9C4;
+    }
+
+    .login-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .login-sub {
+      font-size: 12.5px;
+      color: #D9AFA0;
+      margin-top: 2px;
+    }
+
+    .login-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 26px 26px 22px;
+      box-shadow: var(--shadow-pop);
+    }
+
+    .login-foot {
+      text-align: center;
+      font-size: 11.5px;
+      color: #C08F7E;
+      margin-top: 18px;
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="login-bubble" style="width:220px; height:220px; top:-50px; left:-60px;"></div>
-<div class="login-bubble" style="width:280px; height:280px; bottom:-80px; right:-90px;"></div>
-<div class="login-bubble" style="width:90px; height:90px; top:70px; right:12%;"></div>
-<div class="login-bubble" style="width:60px; height:60px; bottom:14%; left:8%;"></div>
+  <div class="login-bubble" style="width:220px; height:220px; top:-50px; left:-60px;"></div>
+  <div class="login-bubble" style="width:280px; height:280px; bottom:-80px; right:-90px;"></div>
+  <div class="login-bubble" style="width:90px; height:90px; top:70px; right:12%;"></div>
+  <div class="login-bubble" style="width:60px; height:60px; bottom:14%; left:8%;"></div>
 
-<div class="login-wrap">
-  <div class="login-logo">
-    <div class="login-mark">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="13" r="7"/><path d="M9 13c0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3"/><path d="M8 4h1M12 4h1M16 4h1"/></svg>
+  <div class="login-wrap">
+    <div class="login-logo">
+      <div class="login-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <circle cx="12" cy="13" r="7" />
+          <path d="M9 13c0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3" />
+          <path d="M8 4h1M12 4h1M16 4h1" />
+        </svg>
+      </div>
+      <div class="login-title">Menwash Owner</div>
+      <div class="login-sub">Panel operasional outlet</div>
     </div>
-    <div class="login-title">Menwash Admin</div>
-    <div class="login-sub">Panel operasional outlet</div>
+
+    <div class="login-card">
+      <div class="field required">
+        <label>Kode Outlet</label>
+        <input type="text" value="CDW-01" readonly>
+      </div>
+      <div class="field required">
+        <label>Nama Admin</label>
+        <input type="text" placeholder="cth. Rani Admin">
+      </div>
+      <div class="field required">
+        <label>Kata Sandi</label>
+        <input type="text" placeholder="••••••••">
+      </div>
+      <a href="dashboard.html" class="btn btn-primary btn-block mt-8">Masuk ke Dashboard</a>
+      <div class="muted mt-14" style="text-align:center;">Lupa kata sandi? Hubungi penanggung jawab outlet.</div>
+    </div>
+
+    <div class="login-foot">Menwash Owner Panel · Outlet Laundry Cendrawasih</div>
   </div>
-
-  <div class="login-card">
-    <div class="field required">
-      <label>Kode Outlet</label>
-      <input type="text" value="CDW-01" readonly>
-    </div>
-    <div class="field required">
-      <label>Nama Admin</label>
-      <input type="text" placeholder="cth. Rani Admin">
-    </div>
-    <div class="field required">
-      <label>Kata Sandi</label>
-      <input type="text" placeholder="••••••••">
-    </div>
-    <a href="dashboard.html" class="btn btn-primary btn-block mt-8">Masuk ke Dashboard</a>
-    <div class="muted mt-14" style="text-align:center;">Lupa kata sandi? Hubungi penanggung jawab outlet.</div>
-  </div>
-
-  <div class="login-foot">Menwash Admin Panel · Outlet Laundry Cendrawasih</div>
-</div>
 
 </body>
+
 </html>

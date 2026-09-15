@@ -1,5 +1,5 @@
 /* =========================================================
-   MENWASH ADMIN — shared interactions
+   Menwash Owner — shared interactions
    ========================================================= */
 
 function openEl(id){ const el = document.getElementById(id); if(el){ el.classList.add('show'); } }
