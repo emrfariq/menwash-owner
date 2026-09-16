@@ -275,8 +275,8 @@
                   <td><span class="badge ok">Aktif</span></td>
                   <td>
                     <div style="display:flex; gap:12px;">
-                      <a href="#" style="color:var(--text); font-size:12px; font-weight:600;">Reset Password</a>
-                      <a href="#" style="color:var(--err); font-size:12px; font-weight:600;">Nonaktifkan</a>
+                      <a href="#" onclick="openEl('editAdminModal')" style="color:var(--text); font-size:12px; font-weight:600;">Edit</a>
+                      <a href="#" onclick="openEl('deleteAdminModal')" style="color:var(--err); font-size:12px; font-weight:600;">Hapus</a>
                     </div>
                   </td>
                 </tr>
@@ -287,8 +287,8 @@
                   <td><span class="badge ok">Aktif</span></td>
                   <td>
                     <div style="display:flex; gap:12px;">
-                      <a href="#" style="color:var(--text); font-size:12px; font-weight:600;">Reset Password</a>
-                      <a href="#" style="color:var(--err); font-size:12px; font-weight:600;">Nonaktifkan</a>
+                      <a href="#" onclick="openEl('editAdminModal')" style="color:var(--text); font-size:12px; font-weight:600;">Edit</a>
+                      <a href="#" onclick="openEl('deleteAdminModal')" style="color:var(--err); font-size:12px; font-weight:600;">Hapus</a>
                     </div>
                   </td>
                 </tr>
@@ -299,8 +299,8 @@
                   <td><span class="badge" style="background:#fde8e8; color:var(--err);">Dinonaktifkan</span></td>
                   <td>
                     <div style="display:flex; gap:12px;">
-                      <a href="#" style="color:var(--text); font-size:12px; font-weight:600;">Aktifkan Kembali</a>
-                      <a href="#" style="color:var(--err); font-size:12px; font-weight:600;">Hapus Permanen</a>
+                      <a href="#" onclick="openEl('editAdminModal')" style="color:var(--text); font-size:12px; font-weight:600;">Edit</a>
+                      <a href="#" onclick="openEl('deleteAdminModal')" style="color:var(--err); font-size:12px; font-weight:600;">Hapus</a>
                     </div>
                   </td>
                 </tr>
@@ -407,6 +407,77 @@
     <div class="modal-foot">
       <button class="btn btn-ghost" onclick="closeEl('adminModal')">Batal</button>
       <button class="btn btn-primary" style="flex:1;" onclick="closeEl('adminModal'); showToast('Admin berhasil ditambahkan')">Simpan Admin</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL: EDIT ADMIN ===== -->
+<div class="modal-overlay" id="editAdminModal">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h3>Edit Admin</h3>
+        <p>Ubah data akun admin outlet</p>
+      </div>
+      <button class="modal-close" onclick="closeEl('editAdminModal')">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="field required">
+        <label>Nama Lengkap</label>
+        <input type="text" value="Rani Agustina">
+      </div>
+      <div class="field required">
+        <label>Username</label>
+        <input type="text" value="rani_admin">
+      </div>
+      <div class="field required">
+        <label>Penempatan Outlet</label>
+        <select>
+          <option>Semua Outlet</option>
+          <option selected>Outlet Cendrawasih</option>
+          <option>Outlet Merpati</option>
+          <option>Outlet Rajawali</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Status Akun</label>
+        <select>
+          <option selected>Aktif</option>
+          <option>Nonaktif</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeEl('editAdminModal')">Batal</button>
+      <button class="btn btn-primary" style="flex:1;" onclick="closeEl('editAdminModal'); showToast('Data admin berhasil diperbarui')">Simpan Perubahan</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL: HAPUS ADMIN ===== -->
+<div class="modal-overlay" id="deleteAdminModal">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h3>Hapus Admin</h3>
+        <p>Konfirmasi penghapusan akun admin</p>
+      </div>
+      <button class="modal-close" onclick="closeEl('deleteAdminModal')">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Apakah Anda yakin ingin menghapus akun admin ini? Tindakan ini tidak dapat dibatalkan.</p>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeEl('deleteAdminModal')">Batal</button>
+      <button class="btn btn-primary" style="flex:1; background:var(--err); border-color:var(--err);" onclick="closeEl('deleteAdminModal'); showToast('Akun admin berhasil dihapus')">Ya, Hapus Admin</button>
     </div>
   </div>
 </div>
