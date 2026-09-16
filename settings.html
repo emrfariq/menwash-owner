@@ -95,10 +95,11 @@
       <!-- TABS -->
       <div class="card" style="margin-bottom:18px;">
         <div class="card-body" style="padding: 10px 14px;">
-          <div class="seg-row" style="max-width:400px;">
+          <div class="seg-row" style="max-width:600px;">
             <div class="seg active" onclick="switchTab('harga')" id="tab-harga">Harga & Mesin</div>
             <div class="seg" onclick="switchTab('diskon')" id="tab-diskon">Promo & Diskon</div>
             <div class="seg" onclick="switchTab('admin')" id="tab-admin">Kelola Admin</div>
+            <div class="seg" onclick="switchTab('dummy')" id="tab-dummy">Saldo Kompensasi</div>
           </div>
         </div>
       </div>
@@ -310,6 +311,89 @@
         </div>
       </div>
 
+      <!-- TAB CONTENT: DUMMY -->
+      <div id="content-dummy" style="display:none;">
+        <div class="card" style="margin-bottom:18px;">
+          <div class="card-head">
+            <div>
+              <h3>Saldo Kompensasi</h3>
+              <p>Kelola saldo kompensasi untuk masing-masing outlet. Saldo ini digunakan admin untuk menyalakan mesin jika terjadi kegagalan (tanpa memotong deposit pelanggan).</p>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="openEl('addDummyModal')">Tambah Saldo</button>
+          </div>
+          <div class="card-body" style="padding:0;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nama Outlet</th>
+                  <th>Total Saldo Tersedia</th>
+                  <th>Saldo Terpakai (Kerugian)</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight:600;">Outlet Cendrawasih</td>
+                  <td style="color:var(--ok); font-weight:600;">Rp 50.000</td>
+                  <td style="color:var(--err); font-weight:600;">Rp 120.000</td>
+                  <td><a href="#" onclick="openEl('addDummyModal')" style="color:var(--text); font-size:12px; font-weight:600;">Isi Ulang Saldo</a></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;">Outlet Merpati</td>
+                  <td style="color:var(--ok); font-weight:600;">Rp 100.000</td>
+                  <td style="color:var(--err); font-weight:600;">Rp 40.000</td>
+                  <td><a href="#" onclick="openEl('addDummyModal')" style="color:var(--text); font-size:12px; font-weight:600;">Isi Ulang Saldo</a></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;">Outlet Rajawali</td>
+                  <td style="color:var(--err); font-weight:600;">Rp 0</td>
+                  <td style="color:var(--err); font-weight:600;">Rp 10.000</td>
+                  <td><a href="#" onclick="openEl('addDummyModal')" style="color:var(--text); font-size:12px; font-weight:600;">Isi Ulang Saldo</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <h3>Riwayat Pemakaian Saldo</h3>
+              <p>Log aktivitas penggunaan saldo kompensasi oleh admin.</p>
+            </div>
+          </div>
+          <div class="card-body" style="padding:0;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Waktu</th>
+                  <th>Outlet & Admin</th>
+                  <th>ID Transaksi & Mesin</th>
+                  <th>Nilai Terpotong</th>
+                  <th>Alasan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>16 Sep 2026<br><span style="font-size:12px; color:var(--text-soft);">10:30 WIB</span></td>
+                  <td>Outlet Cendrawasih<br><span style="font-size:12px; color:var(--text-soft);">Rani Agustina</span></td>
+                  <td class="mono" style="font-size:13px;">TRX-0916-001<br><span style="color:var(--text-soft); font-family:var(--font-sans);">Mesin Cuci #02</span></td>
+                  <td style="color:var(--err); font-weight:600;">Rp 10.000</td>
+                  <td style="font-size:13px;">Air tidak keluar, error E02</td>
+                </tr>
+                <tr>
+                  <td>15 Sep 2026<br><span style="font-size:12px; color:var(--text-soft);">14:15 WIB</span></td>
+                  <td>Outlet Merpati<br><span style="font-size:12px; color:var(--text-soft);">Budi Santoso</span></td>
+                  <td class="mono" style="font-size:13px;">TRX-0915-084<br><span style="color:var(--text-soft); font-family:var(--font-sans);">Mesin Pengering #01</span></td>
+                  <td style="color:var(--err); font-weight:600;">Rp 8.000</td>
+                  <td style="font-size:13px;">Mesin mati mendadak</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
     </div>
   </main>
 </div>
@@ -482,6 +566,45 @@
   </div>
 </div>
 
+<!-- ===== MODAL: TAMBAH DUMMY ===== -->
+<div class="modal-overlay" id="addDummyModal">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h3>Tambah Saldo Kompensasi</h3>
+        <p>Tambahkan saldo kompensasi untuk outlet tertentu</p>
+      </div>
+      <button class="modal-close" onclick="closeEl('addDummyModal')">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="field required">
+        <label>Pilih Outlet</label>
+        <select>
+          <option>Outlet Cendrawasih</option>
+          <option>Outlet Merpati</option>
+          <option>Outlet Rajawali</option>
+        </select>
+      </div>
+      <div class="field required">
+        <label>Jumlah Saldo (Rp)</label>
+        <input type="number" placeholder="Contoh: 50000">
+      </div>
+      <div class="field">
+        <label>Catatan (Opsional)</label>
+        <input type="text" placeholder="Tambahkan catatan jika perlu">
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeEl('addDummyModal')">Batal</button>
+      <button class="btn btn-primary" style="flex:1;" onclick="closeEl('addDummyModal'); showToast('Saldo Kompensasi berhasil ditambahkan')">Tambahkan Saldo</button>
+    </div>
+  </div>
+</div>
+
 <script src="assets/admin.js"></script>
 <script>
   function switchTab(tabId) {
@@ -491,6 +614,7 @@
     document.getElementById('content-harga').style.display = 'none';
     document.getElementById('content-diskon').style.display = 'none';
     document.getElementById('content-admin').style.display = 'none';
+    document.getElementById('content-dummy').style.display = 'none';
 
     document.getElementById('content-' + tabId).style.display = 'block';
   }
